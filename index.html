@@ -4,12 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="The Keter Protocol - Convergência entre sabedoria ancestral, estratégia soberana e engenharia de sistemas modernos.">
-    <title>The Keter Protocol</title>
+    <meta name="theme-color" content="#0a0a0a">
+    <meta property="og:title" content="The Keter Protocol">
+    <meta property="og:description" content="Convergência entre sabedoria ancestral, estratégia soberana e engenharia de sistemas modernos.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/Techdimbr/the-keter-protocol/main/assets/logo-keter.png">
     
-    <!-- Google Fonts -->
+    <title>The Keter Protocol - Conhecimento • Poder • Equilíbrio</title>
+    
+    <!-- Google Fonts - Preload -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/logo-keter.png">
     
     <style>
         * {
@@ -75,6 +83,18 @@
             animation: fadeInDown 1s ease-out;
         }
 
+        .logo-section {
+            margin-bottom: 2rem;
+        }
+
+        .logo-image {
+            max-width: 200px;
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.4));
+            animation: float 4s ease-in-out infinite;
+        }
+
         .hero h1 {
             font-family: var(--font-title);
             font-size: clamp(2.5rem, 8vw, 5rem);
@@ -135,6 +155,7 @@
             transition: all 0.3s ease;
             margin-top: 2rem;
             cursor: pointer;
+            will-change: transform;
         }
 
         .cta-button:hover {
@@ -183,6 +204,7 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            will-change: transform;
         }
 
         .guardian-card::before {
@@ -276,6 +298,7 @@
             color: var(--color-gold);
             text-shadow: 0 0 40px rgba(212, 175, 55, 0.4);
             animation: float 3s ease-in-out infinite;
+            will-change: transform;
         }
 
         @keyframes float {
@@ -304,6 +327,7 @@
             position: relative;
             overflow: hidden;
             transition: all 0.3s ease;
+            will-change: transform;
         }
 
         .acervo-card::before {
@@ -364,6 +388,7 @@
             transition: all 0.3s ease;
             margin-top: 1.5rem;
             cursor: pointer;
+            will-change: transform;
         }
 
         .read-button:hover {
@@ -448,6 +473,10 @@
                 padding: 4rem 1.5rem;
             }
 
+            .logo-image {
+                max-width: 150px;
+            }
+
             .hero h1 {
                 line-height: 1.2;
                 margin-bottom: 0.5rem;
@@ -478,12 +507,33 @@
                 font-size: 5rem;
             }
         }
+
+        /* ===== PERFORMANCE OPTIMIZATION ===== */
+        img {
+            loading: lazy;
+            decoding: async;
+        }
+
+        @supports (font-display: optional) {
+            @font-face {
+                font-family: 'Cinzel';
+                font-display: optional;
+            }
+            @font-face {
+                font-family: 'Inter';
+                font-display: optional;
+            }
+        }
     </style>
 </head>
 <body>
     <!-- HERO SECTION -->
     <section class="hero">
         <div class="hero-content">
+            <div class="logo-section">
+                <img src="assets/logo-keter.png" alt="The Keter Protocol Logo" class="logo-image" width="200" height="200">
+            </div>
+            
             <h1>THE KETER PROTOCOL</h1>
             <div class="hero-subtitle">CONHECIMENTO • PODER • EQUILÍBRIO</div>
             <div class="hero-divider"></div>
@@ -608,7 +658,7 @@
             });
         });
 
-        // Intersection Observer para animações ao scroll
+        // Intersection Observer para animações ao scroll (lazy animation)
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -100px 0px'
@@ -626,6 +676,17 @@
         document.querySelectorAll('.guardian-card, .acervo-card').forEach(card => {
             observer.observe(card);
         });
+
+        // Performance: Preload critical resources
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(() => {
+                const preloadLink = document.createElement('link');
+                preloadLink.rel = 'preload';
+                preloadLink.as = 'image';
+                preloadLink.href = 'assets/logo-keter.png';
+                document.head.appendChild(preloadLink);
+            });
+        }
     </script>
 </body>
 </html>
