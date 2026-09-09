@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Keter Protocol - Convergência entre sabedoria ancestral, estratégia soberana e engenharia de sistemas modernos.">
+    <title>The Keter Protocol</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-dark: #0a0a0a;
+            --color-dark-secondary: #1a1a1a;
+            --color-dark-tertiary: #2d2d2d;
+            --color-gold: #d4af37;
+            --color-gold-light: #e6c547;
+            --color-white: #f5f5f5;
+            --color-white-secondary: #e0e0e0;
+            --color-accent: #c9a961;
+            
+            --font-title: 'Cinzel', serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-dark);
+            color: var(--color-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-dark-secondary) 50%, var(--color-dark) 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 2rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(212, 175, 55, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 1;
+            max-width: 900px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .hero h1 {
+            font-family: var(--font-title);
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 900;
+            letter-spacing: 4px;
+            color: var(--color-gold);
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+            word-spacing: 100vw;
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-title);
+            font-size: clamp(0.9rem, 3vw, 1.3rem);
+            letter-spacing: 3px;
+            color: var(--color-white-secondary);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .hero-divider {
+            width: 80px;
+            height: 2px;
+            background: var(--color-gold);
+            margin: 1.5rem auto;
+            opacity: 0.7;
+        }
+
+        .hero-motto {
+            font-family: var(--font-title);
+            font-size: clamp(1.2rem, 4vw, 1.8rem);
+            color: var(--color-gold-light);
+            font-style: italic;
+            margin: 2rem 0;
+            font-weight: 600;
+        }
+
+        .hero-manifesto {
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+            color: var(--color-white-secondary);
+            max-width: 600px;
+            margin: 2.5rem auto;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: var(--color-gold);
+            color: var(--color-dark);
+            text-decoration: none;
+            font-family: var(--font-title);
+            font-size: 0.95rem;
+            letter-spacing: 2px;
+            font-weight: 600;
+            border: 2px solid var(--color-gold);
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: transparent;
+            color: var(--color-gold);
+            transform: scale(1.05);
+        }
+
+        /* ===== GUARDIÕES SECTION ===== */
+        .guardioes {
+            padding: 6rem 2rem;
+            background-color: var(--color-dark-secondary);
+            position: relative;
+        }
+
+        .section-title {
+            font-family: var(--font-title);
+            font-size: clamp(2rem, 6vw, 3rem);
+            text-align: center;
+            color: var(--color-gold);
+            margin-bottom: 0.5rem;
+            letter-spacing: 3px;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--color-white-secondary);
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+
+        .guardioes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .guardian-card {
+            background: linear-gradient(135deg, var(--color-dark-tertiary) 0%, var(--color-dark) 100%);
+            padding: 2.5rem 2rem;
+            border: 1px solid var(--color-accent);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .guardian-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .guardian-card:hover {
+            border-color: var(--color-gold);
+            transform: translateY(-10px);
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.2);
+        }
+
+        .guardian-card:hover::before {
+            left: 100%;
+        }
+
+        .guardian-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--color-gold);
+        }
+
+        .guardian-card h3 {
+            font-family: var(--font-title);
+            font-size: 1.5rem;
+            color: var(--color-gold);
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .guardian-card p {
+            font-size: 0.95rem;
+            color: var(--color-white-secondary);
+            line-height: 1.7;
+        }
+
+        /* ===== KETER & TECNOLOGIA SECTION ===== */
+        .keter-tech {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-dark-secondary) 100%);
+            position: relative;
+        }
+
+        .keter-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .keter-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        .keter-text h2 {
+            font-family: var(--font-title);
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            color: var(--color-gold);
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+        }
+
+        .keter-text p {
+            font-size: 1rem;
+            color: var(--color-white-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .keter-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .crown-symbol {
+            font-size: 8rem;
+            color: var(--color-gold);
+            text-shadow: 0 0 40px rgba(212, 175, 55, 0.4);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* ===== ACERVO DE ESTUDOS SECTION ===== */
+        .acervo {
+            padding: 6rem 2rem;
+            background-color: var(--color-dark-secondary);
+            text-align: center;
+            position: relative;
+        }
+
+        .acervo-card {
+            max-width: 700px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, var(--color-dark-tertiary) 0%, var(--color-dark) 100%);
+            padding: 3rem 2.5rem;
+            border: 2px solid var(--color-gold);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .acervo-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, var(--color-gold), var(--color-accent));
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .acervo-card:hover::before {
+            opacity: 0.1;
+        }
+
+        .acervo-card h2 {
+            font-family: var(--font-title);
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            color: var(--color-gold);
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+        }
+
+        .acervo-card p {
+            font-size: 1rem;
+            color: var(--color-white-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .acervo-highlight {
+            color: var(--color-gold-light);
+            font-weight: 500;
+            font-style: italic;
+        }
+
+        .notification-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background-color: var(--color-gold);
+            color: var(--color-dark);
+            font-family: var(--font-title);
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            font-weight: 600;
+            margin-top: 1.5rem;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--color-dark);
+            border-top: 1px solid var(--color-accent);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .pillars {
+            max-width: 900px;
+            margin: 0 auto 2rem;
+            font-size: clamp(0.85rem, 2vw, 0.95rem);
+            color: var(--color-white-secondary);
+            line-height: 1.8;
+            letter-spacing: 1px;
+        }
+
+        .pillar-separator {
+            color: var(--color-gold);
+            margin: 0 0.5rem;
+        }
+
+        .footer-credits {
+            font-size: 0.85rem;
+            color: var(--color-white-secondary);
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--color-dark-tertiary);
+        }
+
+        .footer-credits strong {
+            color: var(--color-gold);
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* ===== SCROLL BEHAVIOR ===== */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
+        /* ===== RESPONSIVENESS ===== */
+        @media (max-width: 768px) {
+            .hero {
+                min-height: auto;
+                padding: 4rem 1.5rem;
+            }
+
+            .hero h1 {
+                line-height: 1.2;
+                margin-bottom: 0.5rem;
+            }
+
+            .guardioes-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .keter-tech {
+                padding: 4rem 1.5rem;
+            }
+
+            .acervo {
+                padding: 4rem 1.5rem;
+            }
+
+            .acervo-card {
+                padding: 2rem 1.5rem;
+            }
+
+            footer {
+                padding: 2rem 1.5rem;
+            }
+
+            .crown-symbol {
+                font-size: 5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>THE KETER PROTOCOL</h1>
+            <div class="hero-subtitle">CONHECIMENTO • PODER • EQUILÍBRIO</div>
+            <div class="hero-divider"></div>
+            
+            <div class="hero-motto">"A coroa não é o fim, é o começo."</div>
+            
+            <p class="hero-manifesto">
+                O Keter Protocol é a convergência entre sabedoria ancestral, estratégia soberana e engenharia de sistemas modernos. 
+                Um espaço onde a vontade encontra a forma, transformando conhecimento em poder e equilíbrio em construção perene.
+            </p>
+            
+            <button class="cta-button">EXPLORAR PROTOCOLO</button>
+        </div>
+    </section>
+
+    <!-- GUARDIÕES SECTION -->
+    <section class="guardioes">
+        <h2 class="section-title">OS QUATRO GUARDIÕES</h2>
+        <p class="section-subtitle">Pilares que sustentam a jornada transcendental</p>
+        
+        <div class="guardioes-grid">
+            <div class="guardian-card fade-in-up">
+                <div class="guardian-icon">🧠</div>
+                <h3>Mente</h3>
+                <p>Busca o conhecimento infinito. Questiona, analisa e compreende. A mente é o instrumento que desvenda os mistérios do universo e constrói verdades permanentes.</p>
+            </div>
+
+            <div class="guardian-card fade-in-up">
+                <div class="guardian-icon">💪</div>
+                <h3>Corpo</h3>
+                <p>Sustenta a jornada. Resiliente, forte e disciplinado. O corpo é o templo onde a vontade se manifesta e a ação ganha forma no mundo material.</p>
+            </div>
+
+            <div class="guardian-card fade-in-up">
+                <div class="guardian-icon">✨</div>
+                <h3>Espírito</h3>
+                <p>Mantém a fé inabalável. Conecta ao propósito maior. O espírito transcende limites materiais e nutre a esperança que alimenta toda transformação.</p>
+            </div>
+
+            <div class="guardian-card fade-in-up">
+                <div class="guardian-icon">⚡</div>
+                <h3>Ação</h3>
+                <p>Transforma a visão em realidade. Executa com precisão e coragem. A ação é o fogo que queima a entropia e constrói o futuro proposto.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- KETER & TECNOLOGIA SECTION -->
+    <section class="keter-tech">
+        <h2 class="section-title" style="margin-bottom: 3rem;">KETER & TECNOLOGIA</h2>
+        
+        <div class="keter-content">
+            <div class="keter-text">
+                <h2>A Coroa Suprema</h2>
+                <p>
+                    Keter é a origem de toda ordem e visão superior. Representa a convergência entre o humano e o transcendente, 
+                    onde a sabedoria ancestral encontra a precisão técnica.
+                </p>
+                
+                <h2 style="margin-top: 2rem;">Tecnologia como Ferramenta</h2>
+                <p>
+                    Inteligência artificial, cibersegurança e resiliência de sistemas formam a tríade moderna de proteção. 
+                    Não como fim, mas como instrumento para elevar a consciência coletiva e construir um futuro onde a 
+                    tecnologia serve à humanidade com equilíbrio e propósito.
+                </p>
+            </div>
+
+            <div class="keter-visual">
+                <div class="crown-symbol">👑</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACERVO DE ESTUDOS SECTION -->
+    <section class="acervo">
+        <h2 class="section-title">ACERVO DE ESTUDOS</h2>
+        
+        <div class="acervo-card">
+            <h2>Transmissões Diárias</h2>
+            <p>
+                <span class="acervo-highlight">Acervo de Estudos — Publicações em breve a partir do Estudo #01</span>
+            </p>
+            <p>
+                Cada dia traz um novo encontro com conhecimento transformador. Mergulhe nas transmissões que conectam 
+                sabedoria antiga com inovação contemporânea. Acompanhe nossa jornada através dos estudos que redefinem 
+                compreensão e propósito.
+            </p>
+            <div class="notification-badge">✨ EM BREVE ✨</div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="pillars">
+            <strong>Pilares Eternos:</strong>
+            <br>
+            Conhecimento
+            <span class="pillar-separator">•</span>
+            Tecnologia
+            <span class="pillar-separator">•</span>
+            Estratégia
+            <span class="pillar-separator">•</span>
+            Equilíbrio
+            <span class="pillar-separator">•</span>
+            Proteção
+            <span class="pillar-separator">•</span>
+            Evolução
+        </div>
+        
+        <div class="footer-credits">
+            <strong>The Keter Protocol</strong> © 2026 | Convergência entre Sabedoria Ancestral e Engenharia Moderna
+            <br>
+            Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll para o botão CTA
+        document.querySelectorAll('.cta-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const guardioes = document.querySelector('.guardioes');
+                guardioes.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Intersection Observer para animações ao scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.guardian-card, .acervo-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
