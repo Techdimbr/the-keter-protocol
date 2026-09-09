@@ -342,7 +342,7 @@
     <!-- HEADER -->
     <header>
         <div class="header-container">
-            <a href="/" class="back-button">← Voltar à Página Inicial</a>
+            <a href="../index.html" class="back-button">← Voltar à Página Inicial</a>
             <div class="header-title">THE KETER PROTOCOL</div>
         </div>
     </header>
@@ -433,37 +433,39 @@
             </p>
 
             <h3>Princípios de Tolerância a Falhas no Modelo Arich Anpin</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Princípio Cabalístico</th>
-                        <th>Aplicação em Sistemas Resilientes</th>
-                        <th>Benefício Estrutural</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="cell-title">Paciência Infinita</td>
-                        <td>Retry exponencial com backoff; timeout generoso para operações críticas</td>
-                        <td>Sistema absorve picos de carga sem colapso; degradação elegante</td>
-                    </tr>
-                    <tr>
-                        <td class="cell-title">Não-Reatividade</td>
-                        <td>Circuit breakers que abrem sem punição; logging sem interrupção</td>
-                        <td>Falhas isoladas não propagam; sistema mantém saúde global</td>
-                    </tr>
-                    <tr>
-                        <td class="cell-title">Aceitação da Imperfeição</td>
-                        <td>Eventual consistency; replicação assíncrona com convergência garantida</td>
-                        <td>Trade-off consciente entre consistência e disponibilidade (CAP)</td>
-                    </tr>
-                    <tr>
-                        <td class="cell-title">Regeneração Contínua</td>
-                        <td>Health checks periódicos; auto-healing de instâncias degradadas</td>
-                        <td>Sistema reconstrói-se continuamente; nenhuma corrupção é permanente</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Princípio Cabalístico</th>
+                            <th>Aplicação em Sistemas Resilientes</th>
+                            <th>Benefício Estrutural</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="cell-title">Paciência Infinita</td>
+                            <td>Retry exponencial com backoff; timeout generoso para operações críticas</td>
+                            <td>Sistema absorve picos de carga sem colapso; degradação elegante</td>
+                        </tr>
+                        <tr>
+                            <td class="cell-title">Não-Reatividade</td>
+                            <td>Circuit breakers que abrem sem punição; logging sem interrupção</td>
+                            <td>Falhas isoladas não propagam; sistema mantém saúde global</td>
+                        </tr>
+                        <tr>
+                            <td class="cell-title">Aceitação da Imperfeição</td>
+                            <td>Eventual consistency; replicação assíncrona com convergência garantida</td>
+                            <td>Trade-off consciente entre consistência e disponibilidade (CAP)</td>
+                        </tr>
+                        <tr>
+                            <td class="cell-title">Regeneração Contínua</td>
+                            <td>Health checks periódicos; auto-healing de instâncias degradadas</td>
+                            <td>Sistema reconstrói-se continuamente; nenhuma corrupção é permanente</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
             <h3>Implementação Prática: Arquitetura Tolerante a Falhas</h3>
             <p>
@@ -493,37 +495,39 @@
                 a garantia de que a presença do sistema nunca é interrompida, nem por manutenção, nem por falha.
             </p>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>Estratégia de Disponibilidade</th>
-                        <th>Implementação Técnica</th>
-                        <th>Alinhamento com Arich Anpin</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="cell-title">Multi-Region Active-Active</td>
-                        <td>Cluster distribuído em 3+ regiões geográficas; tráfego equilibrado</td>
-                        <td>Presença simultânea em múltiplos lugares; onipresença operacional</td>
-                    </tr>
-                    <tr>
-                        <td class="cell-title">Blue-Green Deployment</td>
-                        <td>Dois ambientes espelhados; switching instantâneo sem downtime</td>
-                        <td>Transformação sem descontinuidade; morte e renascimento simultâneos</td>
-                    </tr>
-                    <tr>
-                        <td class="cell-title">Canary Releases</td>
-                        <td>Rollout gradual com observabilidade; rollback automático se anomalia</td>
-                        <td>Mudança cautelosa e testada; não há pressa, apenas precisão</td>
-                    </tr>
-                    <tr>
-                        <td class="cell-title">Disaster Recovery (RPO/RTO)</td>
-                        <td>RPO &lt; 15min; RTO &lt; 5min; backup criptografado contínuo</td>
-                        <td>Regeneração após qualquer calamidade; o sistema ressurge intacto</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Estratégia de Disponibilidade</th>
+                            <th>Implementação Técnica</th>
+                            <th>Alinhamento com Arich Anpin</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="cell-title">Multi-Region Active-Active</td>
+                            <td>Cluster distribuído em 3+ regiões geográficas; tráfego equilibrado</td>
+                            <td>Presença simultânea em múltiplos lugares; onipresença operacional</td>
+                        </tr>
+                        <tr>
+                            <td class="cell-title">Blue-Green Deployment</td>
+                            <td>Dois ambientes espelhados; switching instantâneo sem downtime</td>
+                            <td>Transformação sem descontinuidade; morte e renascimento simultâneos</td>
+                        </tr>
+                        <tr>
+                            <td class="cell-title">Canary Releases</td>
+                            <td>Rollout gradual com observabilidade; rollback automático se anomalia</td>
+                            <td>Mudança cautelosa e testada; não há pressa, apenas precisão</td>
+                        </tr>
+                        <tr>
+                            <td class="cell-title">Disaster Recovery (RPO/RTO)</td>
+                            <td>RPO &lt; 15min; RTO &lt; 5min; backup criptografado contínuo</td>
+                            <td>Regeneração após qualquer calamidade; o sistema ressurge intacto</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
             <h3>SLO e Confiabilidade Numérica</h3>
             <p>
@@ -580,8 +584,7 @@
             <h2>Implementação Técnica Integrada: A Arquitetura Arich Anpin</h2>
             
             <h3>Stack Tecnológico Proposto</h3>
-            <div class="code-block">
-# CAMADA 1: OBSERVABILIDADE ONISCIENTE
+            <div class="code-block"># CAMADA 1: OBSERVABILIDADE ONISCIENTE
 - Prometheus + Victoria Metrics (time-series database)
 - Grafana + Jaeger (distributed tracing)
 - ELK Stack / Loki (log aggregation)
@@ -609,8 +612,7 @@
 - mTLS everywhere (Envoy, service mesh)
 - SPIFFE/SVID (identity verification)
 - Policy Engine (OPA/Rego)
-→ Atributo: Discernimento justo, barreira inviolável
-            </div>
+→ Atributo: Discernimento justo, barreira inviolável</div>
 
             <h3>O Padrão Evolutivo: Convergência Progressiva</h3>
             <p>
@@ -675,7 +677,7 @@
     <!-- FOOTER -->
     <footer>
         <div class="footer-back">
-            <a href="/" class="back-button">← Voltar à Página Inicial</a>
+            <a href="../index.html" class="back-button">← Voltar à Página Inicial</a>
         </div>
         <div class="footer-credits">
             <strong>The Keter Protocol</strong> — Estudo #0001<br>
@@ -687,33 +689,11 @@
     </footer>
 
     <script>
-        // Smooth scroll para botões de voltar
+        // Permite navegação normal dos botões de voltar
         document.querySelectorAll('.back-button').forEach(button => {
             button.addEventListener('click', function(e) {
-                if (button.textContent.includes('Voltar')) {
-                    // Permite navegação normal
-                }
+                // Navegação padrão habilitada
             });
-        });
-
-        // Observador para animações ao scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animation = entry.target.classList.contains('study-hero') 
-                        ? 'fadeInDown 0.8s ease-out' 
-                        : 'fadeInUp 0.8s ease-out';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.content-section').forEach(section => {
-            observer.observe(section);
         });
     </script>
 </body>
