@@ -1,0 +1,19 @@
+title: The Keter Protocol
+description: Convergência entre sabedoria ancestral, estratégia soberana e engenharia de sistemas modernos.
+theme: jekyll-theme-slate
+
+# GitHub Pages Configuration
+markdown: kramdown
+highlighter: rouge
+
+# Build settings
+exclude:
+  - .github
+  - .gitignore
+  - LICENSE
+  - README.md
+
+# Keep all files
+keep_files:
+  - index.html
+  - assets
