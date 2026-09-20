@@ -24,6 +24,7 @@
 🌐 **URL Pública (GitHub Pages):**
 - **Página Inicial:** https://techdimbr.github.io/the-keter-protocol/
 - **Estudo #0001:** https://techdimbr.github.io/the-keter-protocol/estudos/estudo-0001.html
+- **Estudo #0002:** https://techdimbr.github.io/the-keter-protocol/estudos/estudo-0002.html
 
 ---
 
@@ -69,6 +70,29 @@ Apresentação visual e conceitual do protocolo com:
    - Observabilidade (Prometheus, Jaeger, ELK)
    - Persistência Distribuída (CockroachDB, Redis)
    - Inteligência Regenerativa (eBPF, Auto-scaling)
+
+### Estudo #0002: Os Dez Caminhos — Kartografia de Resiliência Distribuída
+**Arquivo:** `estudos/estudo-0002.html`
+
+#### Temas Abordados:
+1. **Fundamentos Cabalísticos**
+   - Sefer Yetzirah: Dez Sefirot e os Três Pilares (Severidade, Misericórdia, Equilíbrio)
+   - Vinte e Dois Netivot (Três Mães, Sete Duplas, Doze Simples)
+   - A Árvore da Vida como grafo dirigido de topologia distribuída
+
+2. **Kartografia das Sefirot**
+   - Mapeamento de Keter a Malchut em camadas de arquitetura (control plane, dados, elasticidade, persistência, entrega)
+   - Seder Hishtalshelut como fluxo descendente de uma requisição distribuída
+
+3. **Falha em Cascata e Reparação**
+   - Shevirat HaKelim (Quebra dos Vasos) como falha em cascata sem isolamento
+   - Tikkun Olam e self-healing / reconciliação automática (Kubernetes controllers)
+   - Bulkheads como virtude cabalística de contenção
+
+4. **Implementação Técnica**
+   - Protocolos fundacionais (gRPC, Kafka/NATS, mTLS/SPIFFE)
+   - Padrões de orquestração temporal (retry, circuit breaker, rate limiting, cache TTL)
+   - Rotas funcionais de negócio (DDD, API Gateway, service discovery, observabilidade)
 
 ---
 
@@ -124,7 +148,8 @@ Apresentação visual e conceitual do protocolo com:
 the-keter-protocol/
 ├── index.html                 # Página inicial
 ├── estudos/
-│   └── estudo-0001.html      # Primeiro estudo publicado
+│   ├── estudo-0001.html      # Primeiro estudo publicado
+│   └── estudo-0002.html      # Segundo estudo publicado
 ├── assets/
 │   └── logo-keter.png        # Logo principal (coroa dourada)
 ├── _config.yml               # Configuração Jekyll/GitHub Pages
@@ -167,7 +192,6 @@ the-keter-protocol/
 
 ## 🎯 Próximos Estudos (Em Desenvolvimento)
 
-- [ ] **Estudo #0002** - Os Dez Caminhos: Kartografia de Resiliência Distribuída
 - [ ] **Estudo #0003** - O Equilíbrio dos Pilares: Estratégia Soberana em Tempos de Caos
 - [ ] **Estudo #0004** - Consciência Coletiva: Sistemas Emergentes e Transcendência Digital
 - [ ] **Manifesto de Abertura** - Declaração de Princípios do Keter Protocol
@@ -222,6 +246,7 @@ Uso exclusivo para fins educacionais, espirituais e técnicos. Qualquer reprodu�
 
 - 🌐 [Site Oficial](https://techdimbr.github.io/the-keter-protocol/)
 - 📚 [Estudo #0001](https://techdimbr.github.io/the-keter-protocol/estudos/estudo-0001.html)
+- 📚 [Estudo #0002](https://techdimbr.github.io/the-keter-protocol/estudos/estudo-0002.html)
 - 📖 [GitHub Repository](https://github.com/Techdimbr/the-keter-protocol)
 - 💬 [Discussões](https://github.com/Techdimbr/the-keter-protocol/discussions)
 - ⚠️ [Issues & Feedback](https://github.com/Techdimbr/the-keter-protocol/issues)
