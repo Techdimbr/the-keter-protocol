@@ -24,6 +24,7 @@
 🌐 **URL Pública (GitHub Pages):**
 - **Página Inicial:** https://techdimbr.github.io/the-keter-protocol/
 - **Estudo #0001:** https://techdimbr.github.io/the-keter-protocol/estudos/estudo-0001.html
+- **Estudo #0002:** https://techdimbr.github.io/the-keter-protocol/estudos/estudo-0002.html
 
 ---
 
@@ -116,6 +117,31 @@ Apresentação visual e conceitual do protocolo com:
 - **Largest Contentful Paint (LCP):** < 2.5s
 - **Cumulative Layout Shift (CLS):** < 0.1
 
+### Estudo #0002: Os Dez Caminhos: Kartografia de Resiliência Distribuída
+**Arquivo:** `estudos/estudo-0002.html`
+
+#### Temas Abordados:
+1. **As Dez Sefirot e os Três Pilares**
+   - Sefer Yetzirah e os Trinta e Dois Caminhos de Sabedoria
+   - Pilar da Misericórdia, Pilar do Rigor, Pilar do Equilíbrio
+   - Klalut (totalidade fractal) segundo Cordovero
+
+2. **Cartografia Sefira-a-Sefira**
+   - Keter → Governança e princípios arquiteturais
+   - Chesed/Gevurah → Redundância e limites (rate limiting, circuit breakers)
+   - Tiferet → Orquestração e balanceamento de carga
+   - Netzach/Hod → Persistência durável e observabilidade
+   - Yesod/Malchut → Infraestrutura de rede e experiência do usuário
+
+3. **Os Vinte e Dois Caminhos como Topologia**
+   - Service mesh e políticas explícitas de comunicação
+   - Contratos de API versionados e tipados
+   - Redundância de rotas contra pontos únicos de falha
+
+4. **Auditoria Sefirótica de Arquitetura**
+   - Dez perguntas de diagnóstico, uma por Sefirah
+   - Conceito de "coerência sefirótica" em sistemas distribuídos
+
 ---
 
 ## 📁 Estrutura do Repositório
@@ -124,7 +150,8 @@ Apresentação visual e conceitual do protocolo com:
 the-keter-protocol/
 ├── index.html                 # Página inicial
 ├── estudos/
-│   └── estudo-0001.html      # Primeiro estudo publicado
+│   ├── estudo-0001.html      # Primeiro estudo publicado
+│   └── estudo-0002.html      # Segundo estudo publicado
 ├── assets/
 │   └── logo-keter.png        # Logo principal (coroa dourada)
 ├── _config.yml               # Configuração Jekyll/GitHub Pages
@@ -167,7 +194,7 @@ the-keter-protocol/
 
 ## 🎯 Próximos Estudos (Em Desenvolvimento)
 
-- [ ] **Estudo #0002** - Os Dez Caminhos: Kartografia de Resiliência Distribuída
+- [x] **Estudo #0002** - Os Dez Caminhos: Kartografia de Resiliência Distribuída
 - [ ] **Estudo #0003** - O Equilíbrio dos Pilares: Estratégia Soberana em Tempos de Caos
 - [ ] **Estudo #0004** - Consciência Coletiva: Sistemas Emergentes e Transcendência Digital
 - [ ] **Manifesto de Abertura** - Declaração de Princípios do Keter Protocol

@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Estudo #0002: Os Dez Caminhos: Kartografia de Resiliência Distribuída - The Keter Protocol">
+    <title>Estudo #0002 - The Keter Protocol</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-dark: #0a0a0a;
+            --color-dark-secondary: #1a1a1a;
+            --color-dark-tertiary: #2d2d2d;
+            --color-gold: #d4af37;
+            --color-gold-light: #e6c547;
+            --color-white: #f5f5f5;
+            --color-white-secondary: #e0e0e0;
+            --color-accent: #c9a961;
+
+            --font-title: 'Cinzel', serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-dark);
+            color: var(--color-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background-color: var(--color-dark-secondary);
+            border-bottom: 1px solid var(--color-accent);
+            padding: 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background-color: transparent;
+            color: var(--color-gold);
+            text-decoration: none;
+            font-family: var(--font-title);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            border: 1px solid var(--color-gold);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .back-button:hover {
+            background-color: var(--color-gold);
+            color: var(--color-dark);
+        }
+
+        .header-title {
+            font-family: var(--font-title);
+            font-size: 1.3rem;
+            color: var(--color-gold);
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .study-hero {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .study-hero h1 {
+            font-family: var(--font-title);
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            color: var(--color-gold);
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .study-number {
+            font-family: var(--font-title);
+            font-size: 0.95rem;
+            color: var(--color-white-secondary);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .study-divider {
+            width: 80px;
+            height: 2px;
+            background: var(--color-gold);
+            margin: 1.5rem auto;
+            opacity: 0.7;
+        }
+
+        .study-hero p {
+            font-size: 1.05rem;
+            color: var(--color-white-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* ===== CONTENT SECTIONS ===== */
+        .content-section {
+            margin-bottom: 3.5rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .content-section h2 {
+            font-family: var(--font-title);
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            color: var(--color-gold);
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .content-section h3 {
+            font-family: var(--font-title);
+            font-size: 1.3rem;
+            color: var(--color-gold-light);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .content-section p {
+            font-size: 1rem;
+            color: var(--color-white-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
+            font-weight: 300;
+        }
+
+        .content-section ul,
+        .content-section ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .content-section li {
+            font-size: 1rem;
+            color: var(--color-white-secondary);
+            margin-bottom: 0.8rem;
+            line-height: 1.8;
+        }
+
+        .highlight {
+            color: var(--color-gold-light);
+            font-weight: 600;
+        }
+
+        .quote {
+            font-style: italic;
+            color: var(--color-gold);
+            border-left: 3px solid var(--color-gold);
+            padding-left: 2rem;
+            margin: 2rem 0;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        /* ===== COMPARISON TABLE ===== */
+        .table-container {
+            overflow-x: auto;
+            margin: 2rem 0;
+            border: 1px solid var(--color-accent);
+            background-color: var(--color-dark-secondary);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background-color: var(--color-dark-tertiary);
+            border-bottom: 2px solid var(--color-gold);
+            padding: 1.2rem;
+            text-align: left;
+            font-family: var(--font-title);
+            color: var(--color-gold);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        td {
+            padding: 1rem 1.2rem;
+            border-bottom: 1px solid var(--color-dark-tertiary);
+            color: var(--color-white-secondary);
+        }
+
+        tr:hover {
+            background-color: var(--color-dark-tertiary);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .cell-title {
+            color: var(--color-gold-light);
+            font-weight: 600;
+        }
+
+        /* ===== CODE BLOCKS ===== */
+        .code-block {
+            background-color: var(--color-dark-tertiary);
+            border-left: 3px solid var(--color-gold);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: var(--color-white-secondary);
+            overflow-x: auto;
+            line-height: 1.6;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--color-dark-secondary);
+            border-top: 1px solid var(--color-accent);
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer-back {
+            margin-bottom: 2rem;
+        }
+
+        .footer-credits {
+            font-size: 0.85rem;
+            color: var(--color-white-secondary);
+        }
+
+        .footer-credits strong {
+            color: var(--color-gold);
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== RESPONSIVENESS ===== */
+        @media (max-width: 768px) {
+            header {
+                padding: 1.5rem;
+            }
+
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            main {
+                padding: 2rem 1.5rem;
+            }
+
+            .study-hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .content-section h2 {
+                font-size: 1.3rem;
+            }
+
+            table {
+                font-size: 0.85rem;
+            }
+
+            th, td {
+                padding: 0.8rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-container">
+            <a href="../index.html" class="back-button">← Voltar à Página Inicial</a>
+            <div class="header-title">THE KETER PROTOCOL</div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- STUDY HERO -->
+        <section class="study-hero">
+            <div class="study-number">Estudo #0002</div>
+            <h1>Os Dez Caminhos: Kartografia de Resiliência Distribuída</h1>
+            <div class="study-divider"></div>
+            <p>Como as Dez Sefirot da Árvore da Vida, descritas no Sefer Yetzirah e sistematizadas por Cordovero e Luria, oferecem uma cartografia completa para o desenho de sistemas distribuídos resilientes — dos princípios de governança ao plano de dados manifesto.</p>
+        </section>
+
+        <!-- INTRODUÇÃO -->
+        <section class="content-section">
+            <h2>Introdução: Do Ein Sof à Malchut, do Design ao Deploy</h2>
+            <p>
+                O <span class="highlight">Estudo #0001</span> estabeleceu Arich Anpin como arquétipo de paciência infinita e disponibilidade incondicional.
+                Este estudo avança um nível: propõe que a totalidade da <span class="highlight">Árvore da Vida</span> — as dez Sefirot e os caminhos
+                que as conectam — funciona como uma <span class="highlight">kartografia completa de resiliência distribuída</span>, um mapa que vai
+                da intenção arquitetural mais abstrata até a interface manifesta que o usuário final toca.
+            </p>
+            <p>
+                O <span class="highlight">Sefer Yetzirah</span> (Livro da Formação), um dos textos cabalísticos mais antigos, descreve trinta e dois
+                caminhos de sabedoria: dez Sefirot (emanações) e vinte e dois caminhos (as letras hebraicas que os conectam). Propomos que essa estrutura
+                — nós e arestas, emanação e conexão — é isomórfica à topologia de um sistema distribuído bem desenhado: componentes especializados
+                (Sefirot) unidos por protocolos de comunicação bem definidos (caminhos).
+            </p>
+            <div class="quote">
+                "Não há Sefirah isolada. Cada uma recebe de cima e transmite para baixo. Um sistema distribuído que ignora essa lei —
+                que trata seus componentes como ilhas — já nasceu fraturado."
+            </div>
+        </section>
+
+        <!-- FUNDAMENTOS CABALÍSTICOS -->
+        <section class="content-section">
+            <h2>Os Fundamentos Cabalísticos: As Dez Emanações e os Três Pilares</h2>
+
+            <h3>A Estrutura Triádica da Árvore</h3>
+            <p>
+                As dez Sefirot organizam-se em três pilares: o <span class="highlight">Pilar da Misericórdia</span> (Chesed, Netzach — à direita),
+                o <span class="highlight">Pilar do Rigor</span> (Gevurah, Hod — à esquerda) e o <span class="highlight">Pilar do Equilíbrio</span>
+                (Keter, Tiferet, Yesod, Malchut — ao centro). Essa disposição não é decorativa: é uma <span class="highlight">arquitetura de
+                controle de fluxo</span>, onde expansão e contração são mediadas por um eixo de síntese.
+            </p>
+            <p>
+                Moisés Cordovero, no <span class="highlight">Pardes Rimonim</span>, insiste que nenhuma Sefirah opera isoladamente — cada uma contém
+                as outras nove em miniatura (o princípio de <span class="highlight">Klalut</span>, totalidade fractal). Um sistema distribuído saudável
+                replica esse princípio: cada nó carrega, em alguma medida, a inteligência do todo (observabilidade local, configuração distribuída,
+                capacidade de decisão autônoma).
+            </p>
+
+            <h3>Os Vinte e Dois Caminhos como Protocolo</h3>
+            <p>
+                O Sefer Yetzirah atribui a cada um dos vinte e dois caminhos uma letra do alfabeto hebraico, e a cada letra um poder de combinação.
+                Em termos de engenharia, os caminhos são o <span class="highlight">protocolo de comunicação</span>: sem eles, as Sefirot são
+                dez estados isolados; com eles, tornam-se um sistema vivo, capaz de propagar informação, energia e correção de um extremo a outro
+                da árvore.
+            </p>
+        </section>
+
+        <!-- OS DEZ CAMINHOS -->
+        <section class="content-section">
+            <h2>Os Dez Caminhos: Cartografia Sefira-a-Sefira</h2>
+            <p>
+                Cada Sefirah corresponde a uma camada funcional de um sistema distribuído resiliente. A tabela abaixo apresenta o mapeamento completo,
+                do topo inacessível de Keter até a manifestação concreta de Malchut.
+            </p>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Sefirah</th>
+                            <th>Atributo Cabalístico</th>
+                            <th>Camada de Sistema Distribuído</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="cell-title">Keter (Coroa)</td>
+                            <td>Vontade primordial, intenção pura</td>
+                            <td>Governança e princípios arquiteturais (design intent, SLOs de negócio)</td>
+                        </tr>
+                        <tr>
+                            <td class="cell-title">Chochmah (Sabedoria)</td>
+                            <td>Insight súbito, faísca criativa</td>
+                            <td>Modelagem de domínio e escolha de arquitetura (DDD, event storming)</td>
+                        </tr>
+                        <tr>
+                            <td class="cell-title">Binah (Entendimento)</td>
+                            <td>Estruturação, análise, forma</td>
+                            <td>Modelagem de dados e schemas (contratos de API, versionamento)</td>
+                        </tr>
+                        <tr>
+                            <td class="cell-title">Chesed (Misericórdia)</td>
+                            <td>Expansão, generosidade sem limites</td>
+                            <td>Redundância e replicação (multi-AZ, réplicas de leitura)</td>
+                        </tr>
+                        <tr>
+                            <td class="cell-title">Gevurah (Rigor)</td>
+                            <td>Contração, julgamento, limite</td>
+                            <td>Rate limiting, circuit breakers, quotas e políticas de autorização</td>
+                        </tr>
+                        <tr>
+                            <td class="cell-title">Tiferet (Beleza/Equilíbrio)</td>
+                            <td>Harmonização de opostos</td>
+                            <td>Orquestração e balanceamento de carga (service mesh, scheduler)</td>
+                        </tr>
+                        <tr>
+                            <td class="cell-title">Netzach (Eternidade)</td>
+                            <td>Persistência, vitória através da duração</td>
+                            <td>Armazenamento durável e filas de mensagens (message brokers, WAL)</td>
+                        </tr>
+                        <tr>
+                            <td class="cell-title">Hod (Esplendor)</td>
+                            <td>Comunicação, ressonância, glória expressa</td>
+                            <td>Observabilidade e telemetria (métricas, logs, tracing distribuído)</td>
+                        </tr>
+                        <tr>
+                            <td class="cell-title">Yesod (Fundação)</td>
+                            <td>Canal, conexão entre o superior e o manifesto</td>
+                            <td>Camada de infraestrutura e rede (service discovery, DNS, ingress)</td>
+                        </tr>
+                        <tr>
+                            <td class="cell-title">Malchut (Reino)</td>
+                            <td>Manifestação concreta, receptáculo final</td>
+                            <td>Interface e experiência do usuário (API pública, frontend, SLA percebido)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Leitura Vertical: Do Princípio ao Produto</h3>
+            <p>
+                Lida de cima para baixo, a coluna sefirótica narra o percurso de uma decisão arquitetural desde a intenção (Keter) até o pixel
+                que o usuário toca (Malchut). Um sistema onde essa cadeia se rompe — onde a interface (Malchut) não reflete os princípios de
+                governança (Keter) — é um sistema em <span class="highlight">dissonância sefirótica</span>: tecnicamente funcional, mas
+                estrategicamente cego.
+            </p>
+
+            <h3>Leitura Horizontal: Os Três Pilares Como Trade-offs</h3>
+            <p>
+                O <span class="highlight">Pilar da Misericórdia</span> (Chesed, Netzach) tende à expansão: mais réplicas, mais capacidade, mais
+                generosidade de recursos. O <span class="highlight">Pilar do Rigor</span> (Gevurah, Hod) tende à contração: limites, quotas,
+                auditoria estrita. Nenhum pilar isolado sustenta um sistema saudável — expansão sem rigor gera custo descontrolado e superfícies
+                de ataque; rigor sem expansão gera fragilidade e gargalos. O <span class="highlight">Pilar do Equilíbrio</span> (Keter, Tiferet,
+                Yesod, Malchut) é onde a arquitetura resolve essa tensão em decisões concretas.
+            </p>
+        </section>
+
+        <!-- OS CAMINHOS COMO TOPOLOGIA -->
+        <section class="content-section">
+            <h2>Os Vinte e Dois Caminhos: Topologia de Comunicação</h2>
+            <p>
+                Se as Sefirot são os nós, os vinte e dois caminhos são as arestas — e nenhuma arquitetura de microsserviços escapa dessa mesma
+                pergunta fundamental: <span class="highlight">quais componentes podem falar diretamente com quais outros, e por qual protocolo?</span>
+            </p>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Princípio dos Caminhos</th>
+                            <th>Aplicação em Topologia Distribuída</th>
+                            <th>Risco Mitigado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="cell-title">Nem toda Sefirah se conecta diretamente a todas</td>
+                            <td>Service mesh com políticas explícitas de comunicação (allow-list de rotas)</td>
+                            <td>Acoplamento excessivo; explosão combinatória de dependências</td>
+                        </tr>
+                        <tr>
+                            <td class="cell-title">Cada caminho carrega um significado (letra) específico</td>
+                            <td>Contratos de API versionados e tipados; schemas explícitos por rota</td>
+                            <td>Ambiguidade semântica; falhas silenciosas de integração</td>
+                        </tr>
+                        <tr>
+                            <td class="cell-title">A árvore permanece conexa mesmo com caminhos "menores"</td>
+                            <td>Múltiplas rotas redundantes entre serviços críticos (multi-path routing)</td>
+                            <td>Ponto único de falha em um enlace de rede</td>
+                        </tr>
+                        <tr>
+                            <td class="cell-title">Fluxo bidirecional entre emanações adjacentes</td>
+                            <td>Comunicação síncrona (request/response) complementada por eventos assíncronos</td>
+                            <td>Latência acumulada; sistemas travados esperando resposta linear</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- APLICAÇÃO TÉCNICA -->
+        <section class="content-section">
+            <h2>Implementação Técnica: A Árvore Como Blueprint de Stack</h2>
+
+            <h3>Stack Tecnológico por Sefirah</h3>
+            <div class="code-block"># KETER — GOVERNANÇA E INTENÇÃO
+- ADRs (Architecture Decision Records)
+- OPA/Rego (policy as code) definindo limites invioláveis
+→ Atributo: A vontade que precede toda forma
+
+# CHOCHMAH + BINAH — MODELAGEM
+- Event Storming, Domain-Driven Design
+- Protobuf / JSON Schema (contratos de dados)
+→ Atributo: A faísca que se torna estrutura
+
+# CHESED + GEVURAH — EXPANSÃO E LIMITE
+- Auto-scaling (Karpenter, HPA) — generosidade controlada
+- Rate limiting (Envoy, Kong), OPA — rigor necessário
+→ Atributo: Equilíbrio entre abundância e contenção
+
+# TIFERET — ORQUESTRAÇÃO
+- Kubernetes Scheduler, Istio (service mesh)
+- Sagas e orquestração de transações distribuídas
+→ Atributo: A beleza da harmonia entre partes conflitantes
+
+# NETZACH + HOD — PERSISTÊNCIA E VOZ
+- Kafka / Pulsar (filas duráveis), PostgreSQL/CockroachDB
+- OpenTelemetry, Prometheus, Grafana (observabilidade)
+→ Atributo: Vitória através da duração, glória através da transparência
+
+# YESOD — FUNDAÇÃO DE REDE
+- Service discovery (Consul, CoreDNS), API Gateway
+- mTLS, SPIFFE/SVID (identidade de serviço)
+→ Atributo: O canal que conecta o oculto ao manifesto
+
+# MALCHUT — MANIFESTAÇÃO
+- API pública, SDKs, frontend
+- SLA percebido pelo usuário final
+→ Atributo: O reino onde tudo se torna experiência real</div>
+
+            <h3>Aplicação Prática: Auditoria Sefirótica de Arquitetura</h3>
+            <p>
+                Propomos um exercício de auditoria em dez perguntas, uma por Sefirah, aplicável a qualquer sistema em produção:
+            </p>
+            <ol>
+                <li><span class="highlight">Keter</span> — Existe um princípio arquitetural documentado que toda decisão técnica deve respeitar?</li>
+                <li><span class="highlight">Chochmah</span> — A escolha de arquitetura nasceu de compreensão real do domínio, ou de modismo?</li>
+                <li><span class="highlight">Binah</span> — Os contratos de dados são explícitos, versionados e testados?</li>
+                <li><span class="highlight">Chesed</span> — O sistema escala com generosidade suficiente para picos previsíveis?</li>
+                <li><span class="highlight">Gevurah</span> — Existem limites explícitos (quotas, timeouts, circuit breakers) contra abuso e cascata?</li>
+                <li><span class="highlight">Tiferet</span> — A orquestração resolve conflitos entre expansão e limite sem intervenção manual constante?</li>
+                <li><span class="highlight">Netzach</span> — Os dados críticos sobrevivem a reinícios, falhas de nó e partições de rede?</li>
+                <li><span class="highlight">Hod</span> — É possível responder "o que está acontecendo agora?" em menos de um minuto?</li>
+                <li><span class="highlight">Yesod</span> — A descoberta de serviços e a identidade de rede são confiáveis e auditáveis?</li>
+                <li><span class="highlight">Malchut</span> — A experiência final do usuário reflete fielmente a intenção definida em Keter?</li>
+            </ol>
+            <p>
+                Um sistema que responde "sim" às dez perguntas atingiu o que este estudo chama de <span class="highlight">coerência sefirótica</span>:
+                cada camada, do princípio à interface, permanece alinhada e rastreável.
+            </p>
+        </section>
+
+        <!-- CONCLUSÃO -->
+        <section class="content-section">
+            <h2>Conclusão: A Árvore Não Tem Galhos Soltos</h2>
+            <p>
+                A Árvore da Vida ensina que nenhuma emanação existe em isolamento — cada Sefirah é, ao mesmo tempo, receptora e transmissora,
+                elo em uma cadeia contínua entre o inefável e o manifesto. Um sistema distribuído que trata seus componentes como módulos
+                desconectados, sem essa consciência de fluxo vertical e horizontal, constrói não uma árvore, mas uma coleção de galhos soltos:
+                frágil, sem circulação, sem memória do todo.
+            </p>
+            <div class="quote">
+                "Dez emanações, vinte e dois caminhos, um só sistema. Quando o Técnico traça sua arquitetura sobre esse mapa,
+                descobre que a resiliência não é uma feature a ser adicionada — é uma geometria a ser respeitada."
+            </div>
+            <p>
+                O <span class="highlight">Estudo #0002</span> completa a kartografia iniciada no Estudo #0001: onde Arich Anpin ensinou a
+                <span class="highlight">postura</span> de um sistema resiliente, a Árvore completa ensina sua <span class="highlight">anatomia</span>.
+                Governança, modelagem, redundância, limite, orquestração, persistência, observabilidade, rede e interface — dez estações de
+                uma única jornada, do princípio inacessível à experiência tocável.
+            </p>
+        </section>
+
+        <!-- REFERÊNCIAS -->
+        <section class="content-section">
+            <h2>Referências e Leituras Complementares</h2>
+            <ul>
+                <li><span class="highlight">Anônimo (atrib. Abraão)</span> — Sefer Yetzirah (Livro da Formação) [Séc. II–VI]</li>
+                <li><span class="highlight">Cordovero, Moisés</span> — Pardes Rimonim (Pomar de Romãs) [Século XVI]</li>
+                <li><span class="highlight">Luria, Isaac</span> — Ensinamentos registrados por Chaim Vital, Etz Chaim [Século XVI]</li>
+                <li><span class="highlight">Scholem, Gershom</span> — Kabbalah [1974]</li>
+                <li><span class="highlight">Kaplan, Aryeh</span> — Sefer Yetzirah: The Book of Creation, tradução e comentário [1997]</li>
+                <li><span class="highlight">Evans, Eric</span> — Domain-Driven Design [2003]</li>
+                <li><span class="highlight">Newman, Sam</span> — Building Microservices [2015]</li>
+                <li><span class="highlight">Burns, Brendan et al.</span> — Designing Distributed Systems [2018]</li>
+                <li><span class="highlight">Kleppmann, Martin</span> — Designing Data-Intensive Applications [2017]</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-back">
+            <a href="../index.html" class="back-button">← Voltar à Página Inicial</a>
+        </div>
+        <div class="footer-credits">
+            <strong>The Keter Protocol</strong> — Estudo #0002<br>
+            Os Dez Caminhos: Kartografia de Resiliência Distribuída<br>
+            <br>
+            © 2026 | Convergência entre Sabedoria Ancestral e Engenharia Moderna<br>
+            Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <script>
+        // Permite navegação normal dos botões de voltar
+        document.querySelectorAll('.back-button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                // Navegação padrão habilitada
+            });
+        });
+    </script>
+</body>
+</html>
