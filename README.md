@@ -24,6 +24,7 @@
 🌐 **URL Pública (GitHub Pages):**
 - **Página Inicial:** https://techdimbr.github.io/the-keter-protocol/
 - **Estudo #0001:** https://techdimbr.github.io/the-keter-protocol/estudos/estudo-0001.html
+- **Estudo #0002:** https://techdimbr.github.io/the-keter-protocol/estudos/estudo-0002.html
 
 ---
 
@@ -69,6 +70,29 @@ Apresentação visual e conceitual do protocolo com:
    - Observabilidade (Prometheus, Jaeger, ELK)
    - Persistência Distribuída (CockroachDB, Redis)
    - Inteligência Regenerativa (eBPF, Auto-scaling)
+
+### Estudo #0002: Os Dez Caminhos - Kartografia de Resiliência Distribuída
+**Arquivo:** `estudos/estudo-0002.html`
+
+#### Temas Abordados:
+1. **Fundamentos Cabalísticos**
+   - Árvore da Vida como Grafo Topológico (dez Sefirot, três pilares)
+   - Sefer Yetzirah e os Trinta e Dois Caminhos de Sabedoria
+   - Etz Chaim de Chaim Vital (Partzufim e canais de Shefa)
+
+2. **Kartografia Técnica**
+   - Mapeamento Sefirá-a-Sefirá para camadas de sistema (control plane, schema registry, service mesh, event bus)
+   - Teorema CAP alinhado aos Três Pilares (Severidade/Consistência, Misericórdia/Disponibilidade, Equilíbrio/Partição)
+
+3. **Os Vinte e Dois Caminhos**
+   - Caminhos como protocolos de comunicação (service mesh)
+   - Consenso Distribuído (Raft, Paxos, PBFT, Gossip)
+   - Shevirat HaKelim (Quebra dos Vasos) como metáfora de partição de rede
+   - Tikkun (Reparação) via CRDTs, vector clocks e Saga pattern
+
+4. **Implementação Técnica**
+   - Stack por Pilar (etcd/Consul, Istio/Linkerd, Kafka/NATS, Envoy, OPA)
+   - Princípio de design: nenhum nó isolado tem significado completo
 
 ---
 
@@ -167,7 +191,7 @@ the-keter-protocol/
 
 ## 🎯 Próximos Estudos (Em Desenvolvimento)
 
-- [ ] **Estudo #0002** - Os Dez Caminhos: Kartografia de Resiliência Distribuída
+- [x] **Estudo #0002** - Os Dez Caminhos: Kartografia de Resiliência Distribuída
 - [ ] **Estudo #0003** - O Equilíbrio dos Pilares: Estratégia Soberana em Tempos de Caos
 - [ ] **Estudo #0004** - Consciência Coletiva: Sistemas Emergentes e Transcendência Digital
 - [ ] **Manifesto de Abertura** - Declaração de Princípios do Keter Protocol
