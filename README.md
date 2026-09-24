@@ -24,6 +24,7 @@
 🌐 **URL Pública (GitHub Pages):**
 - **Página Inicial:** https://techdimbr.github.io/the-keter-protocol/
 - **Estudo #0001:** https://techdimbr.github.io/the-keter-protocol/estudos/estudo-0001.html
+- **Estudo #0002:** https://techdimbr.github.io/the-keter-protocol/estudos/estudo-0002.html
 
 ---
 
@@ -69,6 +70,31 @@ Apresentação visual e conceitual do protocolo com:
    - Observabilidade (Prometheus, Jaeger, ELK)
    - Persistência Distribuída (CockroachDB, Redis)
    - Inteligência Regenerativa (eBPF, Auto-scaling)
+
+### Estudo #0002: Os Dez Caminhos - Kartografia de Resiliência Distribuída
+**Arquivo:** `estudos/estudo-0002.html`
+
+#### Temas Abordados:
+1. **Os Trinta e Dois Caminhos do Sefer Yetzirah**
+   - Dez Sefirot como nós de um grafo distribuído
+   - Vinte e duas letras hebraicas como arestas tipadas
+
+2. **As Dez Sefirot como Camadas Técnicas**
+   - Keter → Control plane / raiz de confiança
+   - Chochmah → API Gateway / Ingress
+   - Binah → Schema Registry / Data Contracts
+   - Chesed/Gevurah/Tiferet → Auto-scaling, rate limiting e service mesh
+   - Netzach/Hod/Yesod → Filas duráveis, observabilidade e event bus
+   - Malkuth → Aplicação voltada ao usuário
+
+3. **As Três Letras-Mãe**
+   - Protocolos síncronos, assíncronos e híbridos
+
+4. **As Sete Letras Duplas**
+   - Padrões de redundância em par (liveness/readiness, circuit breaker, canary, blue-green, replicação, eleição de líder)
+
+5. **As Doze Letras Simples**
+   - Disciplina de resiliência ponto a ponto na malha de microsserviços
 
 ---
 
@@ -167,7 +193,7 @@ the-keter-protocol/
 
 ## 🎯 Próximos Estudos (Em Desenvolvimento)
 
-- [ ] **Estudo #0002** - Os Dez Caminhos: Kartografia de Resiliência Distribuída
+- [x] **Estudo #0002** - Os Dez Caminhos: Kartografia de Resiliência Distribuída
 - [ ] **Estudo #0003** - O Equilíbrio dos Pilares: Estratégia Soberana em Tempos de Caos
 - [ ] **Estudo #0004** - Consciência Coletiva: Sistemas Emergentes e Transcendência Digital
 - [ ] **Manifesto de Abertura** - Declaração de Princípios do Keter Protocol
@@ -222,6 +248,7 @@ Uso exclusivo para fins educacionais, espirituais e técnicos. Qualquer reprodu�
 
 - 🌐 [Site Oficial](https://techdimbr.github.io/the-keter-protocol/)
 - 📚 [Estudo #0001](https://techdimbr.github.io/the-keter-protocol/estudos/estudo-0001.html)
+- 📚 [Estudo #0002](https://techdimbr.github.io/the-keter-protocol/estudos/estudo-0002.html)
 - 📖 [GitHub Repository](https://github.com/Techdimbr/the-keter-protocol)
 - 💬 [Discussões](https://github.com/Techdimbr/the-keter-protocol/discussions)
 - ⚠️ [Issues & Feedback](https://github.com/Techdimbr/the-keter-protocol/issues)
