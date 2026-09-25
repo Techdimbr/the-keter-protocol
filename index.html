@@ -318,6 +318,14 @@
             position: relative;
         }
 
+        .acervo-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
         .acervo-card {
             max-width: 700px;
             margin: 0 auto;
@@ -611,16 +619,30 @@
     <section class="acervo">
         <h2 class="section-title">ACERVO DE ESTUDOS</h2>
         
-        <div class="acervo-card">
-            <h2>Estudo #0001</h2>
-            <p>
-                <span class="acervo-highlight">A Emulação da Coroa e a Paciência Infinita</span>
-            </p>
-            <p>
-                Como o Tomer Devorah e o Pardes Rimonim de Safed fundamentam a tolerância a falhas, 
-                a alta disponibilidade incondicional e a maestria de Arich Anpin na liderança e na tecnologia.
-            </p>
-            <a href="estudos/estudo-0001.html" class="read-button">Ler Estudo Completo</a>
+        <div class="acervo-grid">
+            <div class="acervo-card">
+                <h2>Estudo #0001</h2>
+                <p>
+                    <span class="acervo-highlight">A Emulação da Coroa e a Paciência Infinita</span>
+                </p>
+                <p>
+                    Como o Tomer Devorah e o Pardes Rimonim de Safed fundamentam a tolerância a falhas,
+                    a alta disponibilidade incondicional e a maestria de Arich Anpin na liderança e na tecnologia.
+                </p>
+                <a href="estudos/estudo-0001.html" class="read-button">Ler Estudo Completo</a>
+            </div>
+
+            <div class="acervo-card">
+                <h2>Estudo #0002</h2>
+                <p>
+                    <span class="acervo-highlight">Os Dez Caminhos: Kartografia de Resiliência Distribuída</span>
+                </p>
+                <p>
+                    Como o Sefer Yetzirah e o Etz Chaim descrevem a Árvore da Vida como um grafo de dez nós e
+                    trinta e dois caminhos — antecipando topologia distribuída, roteamento multi-caminho e consenso.
+                </p>
+                <a href="estudos/estudo-0002.html" class="read-button">Ler Estudo Completo</a>
+            </div>
         </div>
     </section>
 
