@@ -24,6 +24,7 @@
 🌐 **URL Pública (GitHub Pages):**
 - **Página Inicial:** https://techdimbr.github.io/the-keter-protocol/
 - **Estudo #0001:** https://techdimbr.github.io/the-keter-protocol/estudos/estudo-0001.html
+- **Estudo #0002:** https://techdimbr.github.io/the-keter-protocol/estudos/estudo-0002.html
 
 ---
 
@@ -69,6 +70,34 @@ Apresentação visual e conceitual do protocolo com:
    - Observabilidade (Prometheus, Jaeger, ELK)
    - Persistência Distribuída (CockroachDB, Redis)
    - Inteligência Regenerativa (eBPF, Auto-scaling)
+
+### Estudo #0002: Os Dez Caminhos: Kartografia de Resiliência Distribuída
+**Arquivo:** `estudos/estudo-0002.html`
+
+#### Temas Abordados:
+1. **Fundamentos Cabalísticos**
+   - Sefer Yetzirah e os 22 Netivot (caminhos)
+   - Etz Chaim de Chaim Vital
+   - Os Três Pilares como domínios de responsabilidade
+
+2. **As Dez Sefirot como Camadas de Sistema Distribuído**
+   - Keter (control plane) a Malchut (edge/experiência do usuário)
+   - Mapeamento completo Sefirah → camada técnica
+
+3. **Consenso e Topologia**
+   - Paxos, Raft, PBFT como Netivot formalizados
+   - Gossip protocols e propagação fractal do Or
+   - Teorema CAP e a Quebra dos Vasos (Shevirat ha-Kelim)
+
+4. **Equilíbrio entre Extremos**
+   - Chesed (autoscaling) vs. Gevurah (rate limiting)
+   - Tiferet como arbitragem contextual, não média
+   - Netzach (persistência) e Hod (comunicação articulada)
+
+5. **Implementação Técnica**
+   - GitOps (ArgoCD/Flux), etcd/Raft, Kafka, gRPC
+   - CockroachDB, CDN, Real User Monitoring
+   - Chaos Engineering como Tikkun contínuo
 
 ---
 
@@ -124,7 +153,8 @@ Apresentação visual e conceitual do protocolo com:
 the-keter-protocol/
 ├── index.html                 # Página inicial
 ├── estudos/
-│   └── estudo-0001.html      # Primeiro estudo publicado
+│   ├── estudo-0001.html      # Primeiro estudo publicado
+│   └── estudo-0002.html      # Segundo estudo publicado
 ├── assets/
 │   └── logo-keter.png        # Logo principal (coroa dourada)
 ├── _config.yml               # Configuração Jekyll/GitHub Pages
@@ -167,7 +197,7 @@ the-keter-protocol/
 
 ## 🎯 Próximos Estudos (Em Desenvolvimento)
 
-- [ ] **Estudo #0002** - Os Dez Caminhos: Kartografia de Resiliência Distribuída
+- [x] **Estudo #0002** - Os Dez Caminhos: Kartografia de Resiliência Distribuída
 - [ ] **Estudo #0003** - O Equilíbrio dos Pilares: Estratégia Soberana em Tempos de Caos
 - [ ] **Estudo #0004** - Consciência Coletiva: Sistemas Emergentes e Transcendência Digital
 - [ ] **Manifesto de Abertura** - Declaração de Princípios do Keter Protocol
@@ -222,6 +252,7 @@ Uso exclusivo para fins educacionais, espirituais e técnicos. Qualquer reprodu�
 
 - 🌐 [Site Oficial](https://techdimbr.github.io/the-keter-protocol/)
 - 📚 [Estudo #0001](https://techdimbr.github.io/the-keter-protocol/estudos/estudo-0001.html)
+- 📚 [Estudo #0002](https://techdimbr.github.io/the-keter-protocol/estudos/estudo-0002.html)
 - 📖 [GitHub Repository](https://github.com/Techdimbr/the-keter-protocol)
 - 💬 [Discussões](https://github.com/Techdimbr/the-keter-protocol/discussions)
 - ⚠️ [Issues & Feedback](https://github.com/Techdimbr/the-keter-protocol/issues)
