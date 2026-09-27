@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Estudo #0002: Os Dez Caminhos - Kartografia de Resiliência Distribuída - The Keter Protocol">
+    <title>Estudo #0002 - The Keter Protocol</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-dark: #0a0a0a;
+            --color-dark-secondary: #1a1a1a;
+            --color-dark-tertiary: #2d2d2d;
+            --color-gold: #d4af37;
+            --color-gold-light: #e6c547;
+            --color-white: #f5f5f5;
+            --color-white-secondary: #e0e0e0;
+            --color-accent: #c9a961;
+
+            --font-title: 'Cinzel', serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-dark);
+            color: var(--color-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background-color: var(--color-dark-secondary);
+            border-bottom: 1px solid var(--color-accent);
+            padding: 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background-color: transparent;
+            color: var(--color-gold);
+            text-decoration: none;
+            font-family: var(--font-title);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            border: 1px solid var(--color-gold);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .back-button:hover {
+            background-color: var(--color-gold);
+            color: var(--color-dark);
+        }
+
+        .header-title {
+            font-family: var(--font-title);
+            font-size: 1.3rem;
+            color: var(--color-gold);
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .study-hero {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .study-hero h1 {
+            font-family: var(--font-title);
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            color: var(--color-gold);
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .study-number {
+            font-family: var(--font-title);
+            font-size: 0.95rem;
+            color: var(--color-white-secondary);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .study-divider {
+            width: 80px;
+            height: 2px;
+            background: var(--color-gold);
+            margin: 1.5rem auto;
+            opacity: 0.7;
+        }
+
+        .study-hero p {
+            font-size: 1.05rem;
+            color: var(--color-white-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* ===== CONTENT SECTIONS ===== */
+        .content-section {
+            margin-bottom: 3.5rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .content-section h2 {
+            font-family: var(--font-title);
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            color: var(--color-gold);
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .content-section h3 {
+            font-family: var(--font-title);
+            font-size: 1.3rem;
+            color: var(--color-gold-light);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .content-section p {
+            font-size: 1rem;
+            color: var(--color-white-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
+            font-weight: 300;
+        }
+
+        .content-section ul,
+        .content-section ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .content-section li {
+            font-size: 1rem;
+            color: var(--color-white-secondary);
+            margin-bottom: 0.8rem;
+            line-height: 1.8;
+        }
+
+        .highlight {
+            color: var(--color-gold-light);
+            font-weight: 600;
+        }
+
+        .quote {
+            font-style: italic;
+            color: var(--color-gold);
+            border-left: 3px solid var(--color-gold);
+            padding-left: 2rem;
+            margin: 2rem 0;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        /* ===== COMPARISON TABLE ===== */
+        .table-container {
+            overflow-x: auto;
+            margin: 2rem 0;
+            border: 1px solid var(--color-accent);
+            background-color: var(--color-dark-secondary);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background-color: var(--color-dark-tertiary);
+            border-bottom: 2px solid var(--color-gold);
+            padding: 1.2rem;
+            text-align: left;
+            font-family: var(--font-title);
+            color: var(--color-gold);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        td {
+            padding: 1rem 1.2rem;
+            border-bottom: 1px solid var(--color-dark-tertiary);
+            color: var(--color-white-secondary);
+        }
+
+        tr:hover {
+            background-color: var(--color-dark-tertiary);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .cell-title {
+            color: var(--color-gold-light);
+            font-weight: 600;
+        }
+
+        /* ===== CODE BLOCKS ===== */
+        .code-block {
+            background-color: var(--color-dark-tertiary);
+            border-left: 3px solid var(--color-gold);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: var(--color-white-secondary);
+            overflow-x: auto;
+            line-height: 1.6;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--color-dark-secondary);
+            border-top: 1px solid var(--color-accent);
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer-back {
+            margin-bottom: 2rem;
+        }
+
+        .footer-credits {
+            font-size: 0.85rem;
+            color: var(--color-white-secondary);
+        }
+
+        .footer-credits strong {
+            color: var(--color-gold);
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== RESPONSIVENESS ===== */
+        @media (max-width: 768px) {
+            header {
+                padding: 1.5rem;
+            }
+
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            main {
+                padding: 2rem 1.5rem;
+            }
+
+            .study-hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .content-section h2 {
+                font-size: 1.3rem;
+            }
+
+            table {
+                font-size: 0.85rem;
+            }
+
+            th, td {
+                padding: 0.8rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-container">
+            <a href="../index.html" class="back-button">← Voltar à Página Inicial</a>
+            <div class="header-title">THE KETER PROTOCOL</div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- STUDY HERO -->
+        <section class="study-hero">
+            <div class="study-number">Estudo #0002</div>
+            <h1>Os Dez Caminhos: Kartografia de Resiliência Distribuída</h1>
+            <div class="study-divider"></div>
+            <p>Como o Sefer Yetzirah e os 32 Caminhos da Sabedoria — as dez Sefirot e as vinte e duas letras que as conectam — fundamentam a topologia, o consenso e a tolerância a partições em sistemas distribuídos.</p>
+        </section>
+
+        <!-- INTRODUÇÃO -->
+        <section class="content-section">
+            <h2>Introdução: A Árvore como Grafo</h2>
+            <p>
+                Se o Estudo #0001 revelou <span class="highlight">Arich Anpin</span> como arquétipo de paciência e disponibilidade,
+                este estudo desce um nível na cartografia sefirótica para examinar a <span class="highlight">estrutura relacional</span>
+                da Árvore da Vida — não os nós isoladamente, mas os <span class="highlight">caminhos</span> que os conectam.
+            </p>
+            <p>
+                O <span class="highlight">Sefer Yetzirah</span> (Livro da Formação), o texto cabalístico mais antigo que
+                sobrevive, descreve <span class="highlight">32 Caminhos da Sabedoria</span>: as dez Sefirot (Belimah, "sem
+                substância", puros números primordiais) e as vinte e duas letras do alefbeto hebraico, que funcionam como
+                <span class="highlight">canais de comunicação</span> entre elas. Nenhuma Sefirah existe isolada — cada uma é
+                definida por seus caminhos de entrada e saída, exatamente como um nó em um grafo distribuído é definido por
+                suas arestas, não por seu conteúdo interno.
+            </p>
+            <div class="quote">
+                "Trinta e dois caminhos maravilhosos de sabedoria gravou Yah... e criou Seu universo por meio de três livros:
+                texto, número e comunicação." — Sefer Yetzirah, Cap. 1
+            </div>
+            <p>
+                Esta tríade — <span class="highlight">Sefer (texto/protocolo), Sefar (número/quantificação) e Sippur
+                (comunicação/mensagem)</span> — antecipa, com quase dois milênios de antecedência, a própria definição
+                moderna de um sistema distribuído: nós que trocam mensagens quantificáveis segundo um protocolo compartilhado.
+            </p>
+        </section>
+
+        <!-- OS DEZ NÓS -->
+        <section class="content-section">
+            <h2>As Dez Sefirot como Topologia de Serviços</h2>
+            <p>
+                Cada Sefirah, no mapeamento proposto por este protocolo, corresponde a uma <span class="highlight">função
+                arquitetural</span> reconhecível em qualquer sistema distribuído maduro. A tabela abaixo estabelece essa
+                correspondência, mantendo os três pilares clássicos — Severidade, Misericórdia e Equilíbrio — como os três
+                planos de uma arquitetura de referência.
+            </p>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Sefirah</th>
+                            <th>Pilar</th>
+                            <th>Função Distribuída Correspondente</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="cell-title">Keter (Coroa)</td>
+                            <td>Equilíbrio</td>
+                            <td>Control plane raiz; fonte única de verdade para configuração global</td>
+                        </tr>
+                        <tr>
+                            <td class="cell-title">Chochmah (Sabedoria)</td>
+                            <td>Misericórdia</td>
+                            <td>Camada de inteligência; geração de insight bruto a partir de sinal (ML/telemetria)</td>
+                        </tr>
+                        <tr>
+                            <td class="cell-title">Binah (Entendimento)</td>
+                            <td>Severidade</td>
+                            <td>Data warehouse / lake; estruturação e schema do insight bruto</td>
+                        </tr>
+                        <tr>
+                            <td class="cell-title">Chesed (Graça)</td>
+                            <td>Misericórdia</td>
+                            <td>Replicação generosa; redundância N+2, expansão elástica sem restrição</td>
+                        </tr>
+                        <tr>
+                            <td class="cell-title">Gevurah (Rigor)</td>
+                            <td>Severidade</td>
+                            <td>Rate limiting, circuit breakers, políticas de admissão (quem entra, quem é cortado)</td>
+                        </tr>
+                        <tr>
+                            <td class="cell-title">Tiferet (Beleza/Equilíbrio)</td>
+                            <td>Equilíbrio</td>
+                            <td>Orquestrador central; reconcilia Chesed e Gevurah (autoscaling com limites)</td>
+                        </tr>
+                        <tr>
+                            <td class="cell-title">Netzach (Eternidade)</td>
+                            <td>Misericórdia</td>
+                            <td>Persistência de longo prazo; consistência eventual, durabilidade do log</td>
+                        </tr>
+                        <tr>
+                            <td class="cell-title">Hod (Esplendor)</td>
+                            <td>Severidade</td>
+                            <td>Observabilidade; métricas, tracing, o "espelho" que reflete o estado real</td>
+                        </tr>
+                        <tr>
+                            <td class="cell-title">Yesod (Fundação)</td>
+                            <td>Equilíbrio</td>
+                            <td>Service mesh / camada de transporte; funil por onde tudo o que é superior se manifesta</td>
+                        </tr>
+                        <tr>
+                            <td class="cell-title">Malchut (Reino)</td>
+                            <td>Equilíbrio</td>
+                            <td>Edge / interface com o usuário; onde o sistema encontra o mundo real</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- OS 22 CAMINHOS -->
+        <section class="content-section">
+            <h2>Os Vinte e Dois Caminhos: Protocolos de Consenso e Gossip</h2>
+            <p>
+                Se as Sefirot são os nós, as <span class="highlight">22 letras-caminho</span> são os protocolos que os
+                conectam — e o Sefer Yetzirah já as classifica em três categorias que mapeiam, com precisão notável, para
+                três famílias de comunicação distribuída:
+            </p>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Classe de Letras (Sefer Yetzirah)</th>
+                            <th>Quantidade</th>
+                            <th>Padrão de Comunicação Distribuída</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="cell-title">Três Mães (Aleph, Mem, Shin)</td>
+                            <td>3</td>
+                            <td>Protocolos fundacionais: consenso (Raft/Paxos), consistência, particionamento — o "CAP" cabalístico</td>
+                        </tr>
+                        <tr>
+                            <td class="cell-title">Sete Duplas (Bet, Gimel, Dalet, Kaf, Peh, Resh, Tav)</td>
+                            <td>7</td>
+                            <td>Canais bidirecionais com estado dual: réplicas primária/secundária, failover ativo-passivo</td>
+                        </tr>
+                        <tr>
+                            <td class="cell-title">Doze Simples</td>
+                            <td>12</td>
+                            <td>Mensageria assíncrona ponto-a-ponto: filas, pub/sub, gossip protocol entre pares</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>As Três Mães como Teorema CAP</h3>
+            <p>
+                A correspondência mais direta está nas <span class="highlight">Três Letras-Mãe</span>: Aleph (ar, o elemento
+                que equilibra), Mem (água, o elemento que flui e se acomoda) e Shin (fogo, o elemento que decide e corta.
+                Isto ecoa precisamente o <span class="highlight">Teorema CAP</span> de Eric Brewer — Consistência,
+                Disponibilidade e Tolerância a Partição — onde um sistema distribuído só pode garantir plenamente duas das
+                três propriedades simultaneamente diante de uma partição de rede.
+            </p>
+            <ul>
+                <li><span class="highlight">Aleph → Equilíbrio (Consistency)</span> — todos os nós veem o mesmo estado antes de responder.</li>
+                <li><span class="highlight">Mem → Fluidez (Availability)</span> — o sistema sempre responde, mesmo que com dados desatualizados.</li>
+                <li><span class="highlight">Shin → Corte (Partition Tolerance)</span> — o sistema aceita e sobrevive à divisão da rede.</li>
+            </ul>
+
+            <h3>As Sete Duplas como Réplicas de Estado</h3>
+            <p>
+                As sete letras duplas — cada uma pronunciável de duas formas — representam pares de estado: quente/frio,
+                aberto/fechado, líder/seguidor. Um sistema que emula essa estrutura implementa
+                <span class="highlight">eleição de líder</span> (leader election) com transição suave entre os dois
+                estados de cada réplica, nunca uma ausência total de resposta.
+            </p>
+
+            <h3>As Doze Simples como Malha de Gossip</h3>
+            <p>
+                As doze letras simples, associadas na tradição aos doze signos e às doze direções diagonais do espaço,
+                descrevem uma <span class="highlight">malha peer-to-peer</span> onde cada nó conhece diretamente apenas
+                seus vizinhos imediatos, e a informação se propaga por <span class="highlight">epidemic broadcast</span>
+                (gossip protocol) até convergência eventual em toda a rede — o mesmo princípio por trás de Cassandra,
+                DynamoDB e Consul.
+            </p>
+        </section>
+
+        <!-- TOLERÂNCIA A PARTIÇÃO -->
+        <section class="content-section">
+            <h2>Os Três Pilares como Planos de Tolerância a Falhas</h2>
+            <p>
+                A disposição da Árvore em três pilares verticais — <span class="highlight">Severidade (esquerda),
+                Misericórdia (direita) e Equilíbrio (centro)</span> — não é apenas estética: é uma arquitetura de
+                <span class="highlight">checks and balances</span> onde nenhum extremo pode dominar sem correção do
+                pilar central.
+            </p>
+
+            <div class="code-block"># PILAR DA SEVERIDADE (Gevurah) — Contenção
+- Rate limiting distribuído (Redis + token bucket)
+- Circuit breakers por serviço (Hystrix, resilience4j)
+- Bulkheads: isolamento de pool de recursos por domínio
+→ Função: impedir que uma falha se propague (blast radius)
+
+# PILAR DA MISERICÓRDIA (Chesed) — Expansão
+- Replicação multi-AZ (mínimo 3 réplicas, quorum ímpar)
+- Auto-scaling horizontal sem teto rígido
+- Cache distribuído generoso (read-through, write-behind)
+→ Função: absorver carga e garantir disponibilidade
+
+# PILAR DO EQUILÍBRIO (Tiferet/Yesod) — Mediação
+- Service mesh com políticas declarativas (Istio, Linkerd)
+- Orquestrador que arbitra entre expansão e contenção
+- Feature flags e progressive delivery
+→ Função: reconciliar os dois extremos em tempo real</div>
+
+            <h3>Estudo de Caso: Consenso Distribuído como Daat</h3>
+            <p>
+                Na tradição lurianica, existe uma décima primeira posição não-canônica chamada <span class="highlight">Daat</span>
+                (Conhecimento) — o ponto invisível onde Chochmah e Binah se unem, ausente do diagrama formal mas
+                estruturalmente necessário. Este protocolo propõe Daat como análogo ao <span class="highlight">algoritmo
+                de consenso</span> (Raft, Paxos, PBFT): ele não é um serviço visível na topologia, mas é a condição
+                invisível que permite que sabedoria bruta (Chochmah/insight) e estrutura (Binah/schema) cheguem a um
+                <span class="highlight">acordo distribuído sobre o estado verdadeiro do sistema</span>.
+            </p>
+        </section>
+
+        <!-- IMPLEMENTAÇÃO TÉCNICA -->
+        <section class="content-section">
+            <h2>Implementação Técnica: A Malha dos 32 Caminhos</h2>
+
+            <h3>Stack de Referência</h3>
+            <div class="code-block"># CAMADA DE CONSENSO (Três Mães / Daat)
+- etcd ou Consul (Raft) para configuração distribuída
+- CockroachDB (Raft por range) para dados transacionais
+→ Caminho: Aleph-Mem-Shin — decisão sobre partições
+
+# CAMADA DE RÉPLICAS DUAIS (Sete Duplas)
+- PostgreSQL streaming replication (primary/standby)
+- Redis Sentinel (leader election automática)
+→ Caminho: transição sem downtime entre estados
+
+# CAMADA DE MALHA PEER-TO-PEER (Doze Simples)
+- Cassandra / ScyllaDB (gossip protocol nativo)
+- SWIM protocol (Serf, HashiCorp) para membership
+→ Caminho: convergência eventual sem coordenador central
+
+# CAMADA DE TOPOLOGIA (Dez Sefirot)
+- Kubernetes namespaces mapeando funções sefiróticas
+- Service mesh (Istio) desenhando os 22 caminhos como rotas mTLS
+→ Caminho: grafo de serviço com política declarativa por aresta</div>
+
+            <h3>Princípio de Design: Nenhum Nó Sem Caminho</h3>
+            <p>
+                A lição arquitetural central deste estudo é que <span class="highlight">nenhuma Sefirah — nenhum
+                serviço — tem significado isolado</span>. Um microsserviço sem observabilidade (sem caminho até Hod),
+                sem replicação (sem caminho até Chesed) ou sem política de contenção (sem caminho até Gevurah) é uma
+                Sefirah quebrada: existe, mas não participa da harmonia do sistema. A auditoria de arquitetura, sob
+                esta lente, torna-se uma pergunta simples: <span class="highlight">todo nó tem seus 22 caminhos, ou
+                existem vértices órfãos na topologia?</span>
+            </p>
+        </section>
+
+        <!-- CONCLUSÃO -->
+        <section class="content-section">
+            <h2>Conclusão: O Grafo é o Território</h2>
+            <p>
+                Onde o Estudo #0001 tratou da <span class="highlight">natureza de um único nó supremo</span> (Arich
+                Anpin), este estudo revela que a resiliência verdadeira nunca reside em um nó isolado, por mais perfeito
+                que seja — ela reside na <span class="highlight">qualidade e redundância dos caminhos</span> que
+                conectam os nós entre si.
+            </p>
+            <div class="quote">
+                "Não é a Coroa sozinha que sustenta o Reino, mas os trinta e dois caminhos que carregam Sua vontade
+                até a última Sefirah manifesta. Um sistema sem caminhos redundantes é uma árvore sem seiva."
+            </div>
+            <p>
+                O arquiteto que compreende os 32 Caminhos da Sabedoria compreende que <span class="highlight">topologia
+                é destino</span>: um grafo bem desenhado sobrevive à perda de qualquer nó individual, enquanto um grafo
+                mal desenhado colapsa mesmo com nós perfeitos. A verdadeira alta disponibilidade, revelada no Estudo
+                #0001, depende diretamente da verdadeira cartografia de conexões, revelada aqui.
+            </p>
+        </section>
+
+        <!-- REFERÊNCIAS -->
+        <section class="content-section">
+            <h2>Referências e Leituras Complementares</h2>
+            <ul>
+                <li><span class="highlight">Sefer Yetzirah (Livro da Formação)</span> — atribuído tradicionalmente a Abraão, redação estimada entre os séc. II–VI</li>
+                <li><span class="highlight">Kaplan, Aryeh</span> — Sefer Yetzirah: The Book of Creation, ed. comentada [1997]</li>
+                <li><span class="highlight">Scholem, Gershom</span> — Origins of the Kabbalah [1962]</li>
+                <li><span class="highlight">Idel, Moshe</span> — Kabbalah: New Perspectives [1988]</li>
+                <li><span class="highlight">Brewer, Eric</span> — CAP Theorem, apresentação PODC [2000]</li>
+                <li><span class="highlight">Ongaro, Diego & Ousterhout, John</span> — In Search of an Understandable Consensus Algorithm (Raft) [2014]</li>
+                <li><span class="highlight">DeCandia, Giuseppe et al.</span> — Dynamo: Amazon's Highly Available Key-value Store [2007]</li>
+                <li><span class="highlight">Das, Abhinandan et al.</span> — SWIM: Scalable Weakly-consistent Infection-style Process Group Membership Protocol [2002]</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-back">
+            <a href="../index.html" class="back-button">← Voltar à Página Inicial</a>
+        </div>
+        <div class="footer-credits">
+            <strong>The Keter Protocol</strong> — Estudo #0002<br>
+            Os Dez Caminhos: Kartografia de Resiliência Distribuída<br>
+            <br>
+            © 2026 | Convergência entre Sabedoria Ancestral e Engenharia Moderna<br>
+            Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <script>
+        // Permite navegação normal dos botões de voltar
+        document.querySelectorAll('.back-button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                // Navegação padrão habilitada
+            });
+        });
+    </script>
+</body>
+</html>
