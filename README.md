@@ -24,6 +24,7 @@
 🌐 **URL Pública (GitHub Pages):**
 - **Página Inicial:** https://techdimbr.github.io/the-keter-protocol/
 - **Estudo #0001:** https://techdimbr.github.io/the-keter-protocol/estudos/estudo-0001.html
+- **Estudo #0002:** https://techdimbr.github.io/the-keter-protocol/estudos/estudo-0002.html
 
 ---
 
