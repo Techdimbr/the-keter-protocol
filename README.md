@@ -24,6 +24,7 @@
 🌐 **URL Pública (GitHub Pages):**
 - **Página Inicial:** https://techdimbr.github.io/the-keter-protocol/
 - **Estudo #0001:** https://techdimbr.github.io/the-keter-protocol/estudos/estudo-0001.html
+- **Estudo #0002:** https://techdimbr.github.io/the-keter-protocol/estudos/estudo-0002.html
 
 ---
 
@@ -124,7 +125,8 @@ Apresentação visual e conceitual do protocolo com:
 the-keter-protocol/
 ├── index.html                 # Página inicial
 ├── estudos/
-│   └── estudo-0001.html      # Primeiro estudo publicado
+│   ├── estudo-0001.html      # Primeiro estudo publicado
+│   └── estudo-0002.html      # Keter como Raiz de Confiança
 ├── assets/
 │   └── logo-keter.png        # Logo principal (coroa dourada)
 ├── _config.yml               # Configuração Jekyll/GitHub Pages
