@@ -514,6 +514,10 @@
             .crown-symbol {
                 width: 7rem;
             }
+
+            .contato {
+                padding: 4rem 1.5rem;
+            }
         }
 
         /* ===== PERFORMANCE OPTIMIZATION ===== */
@@ -553,6 +557,50 @@
         .acervo-lista .tg { display:block; font-size:.75rem; color:var(--color-accent); margin-top:.3rem; }
         .acervo-vazio { color:var(--color-white-secondary); }
         @media (max-width:600px){ .acervo-lista a{grid-template-columns:1fr; gap:.2rem;} }
+
+        /* ===== CONTATO ===== */
+        .contato {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-dark-secondary) 100%);
+            text-align: center;
+        }
+        .contato-form {
+            max-width: 560px;
+            margin: 2rem auto 0;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: 1.3rem;
+        }
+        .contato-form label {
+            font-family: var(--font-title);
+            font-size: .8rem;
+            letter-spacing: 1px;
+            color: var(--color-gold-light);
+            margin-bottom: .4rem;
+            display: block;
+        }
+        .contato-form input,
+        .contato-form textarea {
+            width: 100%;
+            padding: .9rem 1rem;
+            background: var(--color-dark);
+            color: var(--color-white);
+            border: 1px solid var(--color-accent);
+            font: inherit;
+            font-size: 1rem;
+            resize: vertical;
+        }
+        .contato-form input:focus,
+        .contato-form textarea:focus {
+            outline: 2px solid var(--color-gold);
+        }
+        .contato-form textarea { min-height: 140px; }
+        .contato-honey { position: absolute; left: -9999px; }
+        .contato-submit { align-self: center; border: none; }
+        .contato-status { margin-top: .5rem; font-size: .9rem; min-height: 1.4em; text-align: center; }
+        .contato-status.ok { color: var(--color-gold-light); }
+        .contato-status.erro { color: #e08a8a; }
     </style>
 </head>
 <body>
@@ -681,6 +729,29 @@
         <noscript><p class="acervo-vazio">Ative o JavaScript para navegar pelo acervo ou abra <a href="estudos/estudos.json">estudos.json</a>.</p></noscript>
     </section>
 
+    <!-- CONTATO SECTION -->
+    <section class="contato" id="contato">
+        <h2 class="section-title">CONTATO</h2>
+        <p class="section-subtitle">Uma pergunta, uma correção, uma ideia para o próximo estudo — escreva.</p>
+        <form class="contato-form" id="contato-form">
+            <div>
+                <label for="contato-nome">Nome</label>
+                <input type="text" id="contato-nome" name="name" required autocomplete="name">
+            </div>
+            <div>
+                <label for="contato-email">E-mail</label>
+                <input type="email" id="contato-email" name="email" required autocomplete="email">
+            </div>
+            <div>
+                <label for="contato-mensagem">Mensagem</label>
+                <textarea id="contato-mensagem" name="message" required></textarea>
+            </div>
+            <input type="text" name="_honey" class="contato-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <button type="submit" class="read-button contato-submit">Enviar Mensagem</button>
+            <p class="contato-status" id="contato-status" role="status" aria-live="polite"></p>
+        </form>
+    </section>
+
     <!-- FOOTER -->
     <footer>
         <div class="pillars">
@@ -781,6 +852,42 @@
                 recentes = !recentes; e.target.textContent = recentes ? 'Mais recentes primeiro' : 'Mais antigos primeiro'; render();
             });
             $('acervo-mais').addEventListener('click', () => { visiveis += POR_PAGINA; render(); });
+        })();
+
+        // ===== FORMULÁRIO DE CONTATO (FormSubmit.co, sem backend próprio) =====
+        (function () {
+            const form = document.getElementById('contato-form');
+            if (!form) return;
+            const status = document.getElementById('contato-status');
+            const endpoint = 'https://formsubmit.co/ajax/reparafacilcampinas@gmail.com';
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                if (form.querySelector('[name="_honey"]').value) return; // armadilha anti-bot
+                const btn = form.querySelector('.contato-submit');
+                btn.disabled = true;
+                status.textContent = 'Enviando…';
+                status.className = 'contato-status';
+
+                fetch(endpoint, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify({
+                        name: form.name.value,
+                        email: form.email.value,
+                        message: form.message.value,
+                        _subject: 'Nova mensagem — The Keter Protocol'
+                    })
+                }).then(r => {
+                    if (!r.ok) throw new Error('Falha no envio');
+                    status.textContent = 'Mensagem enviada! Obrigado — responderemos em breve.';
+                    status.className = 'contato-status ok';
+                    form.reset();
+                }).catch(() => {
+                    status.textContent = 'Não foi possível enviar agora. Tente novamente ou escreva direto para reparafacilcampinas@gmail.com.';
+                    status.className = 'contato-status erro';
+                }).finally(() => { btn.disabled = false; });
+            });
         })();
     </script>
 </body>
