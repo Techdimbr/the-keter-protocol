@@ -1,0 +1,62 @@
+[
+ {
+  "n": 1,
+  "titulo": "A Emulação da Coroa e a Paciência Infinita",
+  "resumo": "Tomer Devorah e Pardes Rimonim fundamentando tolerância a falhas, alta disponibilidade e a maestria de Arich Anpin.",
+  "tags": [
+   "Keter",
+   "Resiliência",
+   "Liderança"
+  ],
+  "data": "2026-09-09",
+  "url": "estudos/estudo-0001.html"
+ },
+ {
+  "n": 2,
+  "titulo": "Os Dez Caminhos: Cartografia de Resiliência Distribuída",
+  "resumo": "As dez Sefirot como mapa conceitual de um sistema distribuído: da intenção (Keter) à manifestação (Malkhut).",
+  "tags": [
+   "Sefirot",
+   "Arquitetura",
+   "Resiliência"
+  ],
+  "data": "2026-10-03",
+  "url": "estudos/estudo-0002.html"
+ },
+ {
+  "n": 3,
+  "titulo": "Tzimtzum, a Quebra dos Vasos e o Tikkun",
+  "resumo": "Antes de haver sistema, havia limite: os três movimentos luriânicos como modelo de fronteiras, falha em cascata e reparo.",
+  "tags": [
+   "Isaac Luria",
+   "Resiliência",
+   "Post-mortem"
+  ],
+  "data": "2026-09-30",
+  "url": "estudos/estudo-0003.html"
+ },
+ {
+  "n": 4,
+  "titulo": "Shevirat HaKelim e o Post-mortem sem Culpa",
+  "resumo": "Quando o sistema quebra na primeira emissão: observabilidade como recolher de centelhas e o post-mortem blameless como Tikkun.",
+  "tags": [
+   "Isaac Luria",
+   "Incidentes",
+   "Observabilidade"
+  ],
+  "data": "2026-09-29",
+  "url": "estudos/estudo-0004.html"
+ },
+ {
+  "n": 5,
+  "titulo": "Keter como Raiz de Confiança",
+  "resumo": "Ratzon, Ayin e Tzimtzum: Keter como raiz de confiança, intenção declarativa e cadeia de autoridade em sistemas seguros.",
+  "tags": [
+   "Keter",
+   "Segurança",
+   "Infra como Código"
+  ],
+  "data": "2026-10-02",
+  "url": "estudos/estudo-0005.html"
+ }
+]
