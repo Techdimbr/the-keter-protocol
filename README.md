@@ -165,6 +165,10 @@ the-keter-protocol/
 
 ---
 
+## 🗂️ Acervo
+
+O acervo da página inicial é gerado a partir de `estudos/estudos.json` (busca, filtro por tema, ordenação e paginação). Para publicar um novo estudo: crie `estudos/estudo-NNNN.html` e adicione uma entrada no JSON.
+
 ## 🎯 Próximos Estudos (Em Desenvolvimento)
 
 - [x] **Estudo #0002** - Os Dez Caminhos: Kartografia de Resiliência Distribuída

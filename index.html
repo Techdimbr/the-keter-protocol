@@ -524,6 +524,27 @@
                 font-display: optional;
             }
         }
+
+        /* ===== ACERVO ESCALÁVEL ===== */
+        .acervo-destaque { text-align:center; margin-bottom:3rem; }
+        .acervo-destaque .selo { display:inline-block; font-size:.75rem; letter-spacing:3px; color:var(--color-dark); background:var(--color-gold); padding:.25rem .8rem; margin-bottom:1rem; }
+        .acervo-controles { max-width:900px; margin:0 auto 1.5rem; }
+        #acervo-busca { width:100%; padding:.9rem 1rem; background:var(--color-dark); color:var(--color-white); border:1px solid var(--color-accent); font:inherit; font-size:1rem; }
+        #acervo-busca:focus { outline:2px solid var(--color-gold); }
+        .acervo-tags { display:flex; flex-wrap:wrap; gap:.5rem; justify-content:center; margin:1rem 0; }
+        .acervo-tags button, .acervo-ordem { background:transparent; color:var(--color-gold); border:1px solid var(--color-accent); padding:.35rem .9rem; font:inherit; font-size:.85rem; cursor:pointer; }
+        .acervo-tags button[aria-pressed="true"] { background:var(--color-gold); color:var(--color-dark); }
+        .acervo-meta { display:flex; justify-content:space-between; align-items:center; color:var(--color-white-secondary); font-size:.85rem; gap:1rem; flex-wrap:wrap; }
+        .acervo-lista { list-style:none; max-width:900px; margin:0 auto 2rem; text-align:left; }
+        .acervo-lista li { border-bottom:1px solid var(--color-dark-tertiary); }
+        .acervo-lista a { display:grid; grid-template-columns:5.5rem 1fr; gap:1rem; padding:1rem .5rem; color:var(--color-white); text-decoration:none; transition:background .2s; }
+        .acervo-lista a:hover, .acervo-lista a:focus-visible { background:var(--color-dark-tertiary); }
+        .acervo-lista .num { font-family:var(--font-title); color:var(--color-gold); font-size:1.1rem; }
+        .acervo-lista .tit { color:var(--color-gold-light); font-weight:500; }
+        .acervo-lista .res { display:block; color:var(--color-white-secondary); font-size:.9rem; font-weight:300; margin-top:.2rem; }
+        .acervo-lista .tg { display:block; font-size:.75rem; color:var(--color-accent); margin-top:.3rem; }
+        .acervo-vazio { color:var(--color-white-secondary); }
+        @media (max-width:600px){ .acervo-lista a{grid-template-columns:1fr; gap:.2rem;} }
     </style>
 </head>
 <body>
@@ -608,32 +629,18 @@
     </section>
 
     <!-- ACERVO DE ESTUDOS SECTION -->
-    <section class="acervo">
+    <section class="acervo" id="acervo">
         <h2 class="section-title">ACERVO DE ESTUDOS</h2>
-        
-        <div class="acervo-card">
-            <h2>Estudo #0001</h2>
-            <p>
-                <span class="acervo-highlight">A Emulação da Coroa e a Paciência Infinita</span>
-            </p>
-            <p>
-                Como o Tomer Devorah e o Pardes Rimonim de Safed fundamentam a tolerância a falhas, 
-                a alta disponibilidade incondicional e a maestria de Arich Anpin na liderança e na tecnologia.
-            </p>
-            <a href="estudos/estudo-0001.html" class="read-button">Ler Estudo Completo</a>
+        <div id="acervo-destaque" class="acervo-card acervo-destaque" hidden></div>
+        <div class="acervo-controles">
+            <input id="acervo-busca" type="search" placeholder="Buscar por título, tema ou palavra-chave…" aria-label="Buscar estudos">
+            <div id="acervo-tags" class="acervo-tags" role="group" aria-label="Filtrar por tema"></div>
+            <div class="acervo-meta"><span id="acervo-contagem"></span>
+                <button id="acervo-ordem" type="button" class="acervo-ordem">Mais recentes primeiro</button></div>
         </div>
-
-        <div class="acervo-card">
-            <h2>Estudo #0002</h2>
-            <p>
-                <span class="acervo-highlight">Os Dez Caminhos: Cartografia de Resiliência Distribuída</span>
-            </p>
-            <p>
-                As dez Sefirot como mapa conceitual de um sistema distribuído: da intenção (Keter) à manifestação (Malkhut),
-                e o fluxo de feedback que mantém tudo vivo.
-            </p>
-            <a href="estudos/estudo-0002.html" class="read-button">Ler Estudo Completo</a>
-        </div>
+        <ul id="acervo-lista" class="acervo-lista"></ul>
+        <button id="acervo-mais" type="button" class="read-button" hidden>Carregar mais estudos</button>
+        <noscript><p class="acervo-vazio">Ative o JavaScript para navegar pelo acervo ou abra <a href="estudos/estudos.json">estudos.json</a>.</p></noscript>
     </section>
 
     <!-- FOOTER -->
@@ -699,6 +706,55 @@
                 document.head.appendChild(preloadLink);
             });
         }
+
+        // ===== ACERVO ESCALÁVEL: carrega estudos/estudos.json =====
+        (function () {
+            const POR_PAGINA = 12;
+            let todos = [], tag = '', termo = '', recentes = true, visiveis = POR_PAGINA;
+            const $ = id => document.getElementById(id);
+            const norm = t => (t || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+            const pad = n => '#' + String(n).padStart(4, '0');
+            const esc = t => String(t).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+            function render() {
+                const q = norm(termo);
+                let lista = todos.filter(e => (!tag || e.tags.includes(tag)) &&
+                    (!q || norm([e.titulo, e.resumo, e.tags.join(' '), pad(e.n)].join(' ')).includes(q)));
+                lista.sort((a, b) => recentes ? b.n - a.n : a.n - b.n);
+                $('acervo-contagem').textContent = lista.length + ' de ' + todos.length + ' estudos';
+                $('acervo-lista').innerHTML = lista.slice(0, visiveis).map(e =>
+                    '<li><a href="' + esc(e.url) + '"><span class="num">Estudo ' + pad(e.n) + '</span><span><span class="tit">' +
+                    esc(e.titulo) + '</span><span class="res">' + esc(e.resumo) + '</span><span class="tg">' +
+                    e.tags.map(esc).join(' · ') + '</span></span></a></li>').join('') ||
+                    '<li class="acervo-vazio">Nenhum estudo encontrado.</li>';
+                $('acervo-mais').hidden = lista.length <= visiveis;
+            }
+
+            fetch('estudos/estudos.json').then(r => r.json()).then(dados => {
+                todos = dados;
+                const ult = todos.reduce((a, b) => b.n > a.n ? b : a);
+                const d = $('acervo-destaque');
+                d.innerHTML = '<span class="selo">ÚLTIMA PUBLICAÇÃO</span><h2>Estudo ' + pad(ult.n) + '</h2><p><span class="acervo-highlight">' +
+                    esc(ult.titulo) + '</span></p><p>' + esc(ult.resumo) + '</p><a href="' + esc(ult.url) + '" class="read-button">Ler Estudo Completo</a>';
+                d.hidden = false;
+                const tags = [...new Set(todos.flatMap(e => e.tags))].sort((a, b) => a.localeCompare(b, 'pt'));
+                $('acervo-tags').innerHTML = ['Todos'].concat(tags).map(t =>
+                    '<button type="button" data-tag="' + (t === 'Todos' ? '' : esc(t)) + '" aria-pressed="' + (t === 'Todos') + '">' + esc(t) + '</button>').join('');
+                $('acervo-tags').addEventListener('click', ev => {
+                    const b = ev.target.closest('button'); if (!b) return;
+                    tag = b.dataset.tag; visiveis = POR_PAGINA;
+                    $('acervo-tags').querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b));
+                    render();
+                });
+                render();
+            }).catch(() => { $('acervo-contagem').textContent = 'Não foi possível carregar o acervo.'; });
+
+            $('acervo-busca').addEventListener('input', e => { termo = e.target.value; visiveis = POR_PAGINA; render(); });
+            $('acervo-ordem').addEventListener('click', e => {
+                recentes = !recentes; e.target.textContent = recentes ? 'Mais recentes primeiro' : 'Mais antigos primeiro'; render();
+            });
+            $('acervo-mais').addEventListener('click', () => { visiveis += POR_PAGINA; render(); });
+        })();
     </script>
 </body>
 </html>
