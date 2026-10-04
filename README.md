@@ -23,7 +23,7 @@
 
 🌐 **URL Pública (GitHub Pages):**
 - **Página Inicial:** https://techdimbr.github.io/the-keter-protocol/
-- **Estudo #0001:** https://techdimbr.github.io/the-keter-protocol/estudos/estudo-0001.html
+- **Acervo de Estudos:** https://techdimbr.github.io/the-keter-protocol/#acervo (busca, filtro por tema e paginação sobre todos os estudos publicados)
 
 ---
 
@@ -31,44 +31,14 @@
 
 ### Página Inicial (`index.html`)
 Apresentação visual e conceitual do protocolo com:
-- **Hero Section** - Título, subtítulo e manifesto com logo
+- **Hero Section** - Título, subtítulo, manifesto e logotipo (coroa vetorial, SVG inline)
 - **Os Quatro Guardiões** - Mente, Corpo, Espírito, Ação
 - **Keter & Tecnologia** - Integração ancestral-moderna
-- **Acervo de Estudos** - Publicações inaugurais
+- **Acervo de Estudos** - gerado dinamicamente de `estudos/estudos.json`
 - **Design Cinematográfico** - Preto ônix/cinza profundo + Dourado nobre
 
-### Estudo #0001: A Emulação da Coroa e a Paciência Infinita
-**Arquivo:** `estudos/estudo-0001.html`
-
-#### Temas Abordados:
-1. **Fundamentos Cabalísticos**
-   - Estrutura Sefirótica da Árvore da Vida
-   - Tomer Devorah (Imitação das Qualidades Divinas)
-   - Pardes Rimonim (Estrutura Fractal da Manifestação)
-
-2. **Tolerância a Falhas**
-   - Paciência Infinita como Princípio
-   - Retry Exponencial e Backoff
-   - Circuit Breakers e Isolamento de Falhas
-   - Auto-Cicatrização de Sistemas
-
-3. **Alta Disponibilidade Incondicional**
-   - Disponibilidade 99.999% (5 nines)
-   - Multi-Region Active-Active
-   - Blue-Green Deployment
-   - Disaster Recovery (RPO/RTO)
-
-4. **Maestria de Arich Anpin na Liderança**
-   - Presença Constante sem Intrusão
-   - Justiça sem Ira
-   - Confiança nas Emanações
-   - Comunicação Oracular
-
-5. **Implementação Técnica**
-   - Stack Kubernetes + Service Mesh
-   - Observabilidade (Prometheus, Jaeger, ELK)
-   - Persistência Distribuída (CockroachDB, Redis)
-   - Inteligência Regenerativa (eBPF, Auto-scaling)
+### Estudos
+A lista completa e atualizada de estudos publicados — número, título, resumo, tags e URL — vive em **`estudos/estudos.json`**, que é a única fonte de verdade consultada pela página inicial e pela rotina diária. Não mantemos aqui uma descrição manual estudo a estudo porque ela desatualiza rapidamente; para ver o conteúdo de um estudo, abra o `.html` correspondente em `estudos/` ou a página inicial.
 
 ---
 
@@ -122,11 +92,14 @@ Apresentação visual e conceitual do protocolo com:
 
 ```
 the-keter-protocol/
-├── index.html                 # Página inicial
+├── index.html                 # Página inicial (acervo dinâmico via estudos.json)
 ├── estudos/
-│   └── estudo-0001.html      # Primeiro estudo publicado
+│   ├── estudo-0001.html ...  # Um arquivo HTML por estudo publicado
+│   └── estudos.json          # Fonte de verdade: índice de todos os estudos
 ├── assets/
-│   └── logo-keter.png        # Logo principal (coroa dourada)
+│   ├── favicon.svg           # Logotipo vetorial (coroa dourada) — favicon e marca inline
+│   ├── favicon.png           # Fallback raster do favicon/apple-touch-icon
+│   └── og-image.png          # Imagem de compartilhamento (Open Graph / Twitter Card)
 ├── _config.yml               # Configuração Jekyll/GitHub Pages
 ├── .nojekyll                 # Desabilita Jekyll (HTML puro)
 └── README.md                 # Este arquivo
@@ -167,14 +140,11 @@ the-keter-protocol/
 
 ## 🗂️ Acervo
 
-O acervo da página inicial é gerado a partir de `estudos/estudos.json` (busca, filtro por tema, ordenação e paginação). Para publicar um novo estudo: crie `estudos/estudo-NNNN.html` e adicione uma entrada no JSON.
+O acervo da página inicial é gerado a partir de `estudos/estudos.json` (busca, filtro por tema, ordenação e paginação). Para publicar um novo estudo: crie `estudos/estudo-NNNN.html` e adicione uma entrada no JSON — esse arquivo é a **única** fonte de verdade sobre o que já foi publicado e qual é o próximo número; não mantemos um roteiro fixo de títulos futuros neste README porque ele desatualiza a cada publicação.
 
-## 🎯 Próximos Estudos (Em Desenvolvimento)
+## ⚙️ Publicação Diária Automatizada
 
-- [x] **Estudo #0002** - Os Dez Caminhos: Kartografia de Resiliência Distribuída
-- [ ] **Estudo #0003** - O Equilíbrio dos Pilares: Estratégia Soberana em Tempos de Caos
-- [ ] **Estudo #0004** - Consciência Coletiva: Sistemas Emergentes e Transcendência Digital
-- [ ] **Manifesto de Abertura** - Declaração de Princípios do Keter Protocol
+Uma rotina agendada gera um novo estudo por dia (Kabalá/Keter com tons de tecnologia) e abre uma PR em draft, que hoje ainda depende de alguém mesclar manualmente em `main`. Entre 09/2026 e 10/2026 isso gerou 13 PRs de rascunho não revisadas e nunca mescladas, porque cada execução seguinte não tinha como saber que o estudo do dia anterior ainda não tinha sido publicado — elas foram fechadas manualmente. **Enquanto a mesclagem continuar manual, mescle (ou feche) a PR do estudo assim que puder**, de preferência no mesmo dia, para que a próxima execução sempre encontre `estudos/estudos.json` atualizado e não duplique trabalho.
 
 ---
 
