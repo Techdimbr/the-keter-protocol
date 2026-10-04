@@ -58,5 +58,17 @@
   ],
   "data": "2026-10-02",
   "url": "estudos/estudo-0005.html"
+ },
+ {
+  "n": 6,
+  "titulo": "Os Quatro Mundos: da Intenção Arquitetural ao Runtime em Produção",
+  "resumo": "Atzilut, Beriah, Yetzirah e Assiah como mapa da jornada de uma mudança: da intenção declarada ao sistema rodando em produção.",
+  "tags": [
+   "Isaac Luria",
+   "Quatro Mundos",
+   "Arquitetura"
+  ],
+  "data": "2026-10-04",
+  "url": "estudos/estudo-0006.html"
  }
 ]
