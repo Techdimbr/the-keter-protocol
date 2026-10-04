@@ -7,17 +7,25 @@
     <meta name="theme-color" content="#0a0a0a">
     <meta property="og:title" content="The Keter Protocol">
     <meta property="og:description" content="Convergência entre sabedoria ancestral, estratégia soberana e engenharia de sistemas modernos.">
-    <meta property="og:image" content="https://raw.githubusercontent.com/Techdimbr/the-keter-protocol/main/assets/logo-keter.png">
-    
+    <meta property="og:image" content="https://raw.githubusercontent.com/Techdimbr/the-keter-protocol/main/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Keter Protocol">
+    <meta name="twitter:description" content="Convergência entre sabedoria ancestral, estratégia soberana e engenharia de sistemas modernos.">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/Techdimbr/the-keter-protocol/main/assets/og-image.png">
+
     <title>The Keter Protocol - Conhecimento • Poder • Equilíbrio</title>
-    
+
     <!-- Google Fonts - Preload -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="assets/logo-keter.png">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="apple-touch-icon" href="assets/favicon.png">
     
     <style>
         * {
@@ -294,9 +302,9 @@
         }
 
         .crown-symbol {
-            font-size: 8rem;
-            color: var(--color-gold);
-            text-shadow: 0 0 40px rgba(212, 175, 55, 0.4);
+            width: clamp(10rem, 18vw, 14rem);
+            height: auto;
+            filter: drop-shadow(0 0 40px rgba(212, 175, 55, 0.4));
             animation: float 3s ease-in-out infinite;
             will-change: transform;
         }
@@ -504,7 +512,7 @@
             }
 
             .crown-symbol {
-                font-size: 5rem;
+                width: 7rem;
             }
         }
 
@@ -552,7 +560,22 @@
     <section class="hero">
         <div class="hero-content">
             <div class="logo-section">
-                <img src="assets/logo-keter.png" alt="The Keter Protocol Logo" class="logo-image" width="200" height="200">
+                <svg class="logo-image" viewBox="0 0 200 170" role="img" aria-label="The Keter Protocol" width="200" height="170">
+                    <defs>
+                        <linearGradient id="kg-hero" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#e6c547"/>
+                            <stop offset="55%" stop-color="#d4af37"/>
+                            <stop offset="100%" stop-color="#9c7a24"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="M20,150 L20,90 L50,40 L75,100 L100,20 L125,100 L150,40 L180,90 L180,150 Z"
+                          fill="url(#kg-hero)" stroke="#0a0a0a" stroke-width="3" stroke-linejoin="round"/>
+                    <line x1="20" y1="122" x2="180" y2="122" stroke="#0a0a0a" stroke-width="2" stroke-opacity=".35"/>
+                    <circle cx="50" cy="40" r="7" fill="#0a0a0a"/><circle cx="50" cy="40" r="4" fill="#f5f5f5"/>
+                    <circle cx="100" cy="20" r="8" fill="#0a0a0a"/><circle cx="100" cy="20" r="5" fill="#f5f5f5"/>
+                    <circle cx="150" cy="40" r="7" fill="#0a0a0a"/><circle cx="150" cy="40" r="4" fill="#f5f5f5"/>
+                    <circle cx="100" cy="136" r="9" fill="#0a0a0a"/><circle cx="100" cy="136" r="5.5" fill="#e6c547"/>
+                </svg>
             </div>
             
             <h1>THE KETER PROTOCOL</h1>
@@ -623,7 +646,22 @@
             </div>
 
             <div class="keter-visual">
-                <div class="crown-symbol">👑</div>
+                <svg class="crown-symbol" viewBox="0 0 200 170" role="img" aria-label="Coroa de Keter">
+                    <defs>
+                        <linearGradient id="kg-tech" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#e6c547"/>
+                            <stop offset="55%" stop-color="#d4af37"/>
+                            <stop offset="100%" stop-color="#9c7a24"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="M20,150 L20,90 L50,40 L75,100 L100,20 L125,100 L150,40 L180,90 L180,150 Z"
+                          fill="url(#kg-tech)" stroke="#0a0a0a" stroke-width="3" stroke-linejoin="round"/>
+                    <line x1="20" y1="122" x2="180" y2="122" stroke="#0a0a0a" stroke-width="2" stroke-opacity=".35"/>
+                    <circle cx="50" cy="40" r="7" fill="#0a0a0a"/><circle cx="50" cy="40" r="4" fill="#f5f5f5"/>
+                    <circle cx="100" cy="20" r="8" fill="#0a0a0a"/><circle cx="100" cy="20" r="5" fill="#f5f5f5"/>
+                    <circle cx="150" cy="40" r="7" fill="#0a0a0a"/><circle cx="150" cy="40" r="4" fill="#f5f5f5"/>
+                    <circle cx="100" cy="136" r="9" fill="#0a0a0a"/><circle cx="100" cy="136" r="5.5" fill="#e6c547"/>
+                </svg>
             </div>
         </div>
     </section>
@@ -695,17 +733,6 @@
         document.querySelectorAll('.guardian-card, .acervo-card').forEach(card => {
             observer.observe(card);
         });
-
-        // Performance: Preload critical resources
-        if ('requestIdleCallback' in window) {
-            requestIdleCallback(() => {
-                const preloadLink = document.createElement('link');
-                preloadLink.rel = 'preload';
-                preloadLink.as = 'image';
-                preloadLink.href = 'assets/logo-keter.png';
-                document.head.appendChild(preloadLink);
-            });
-        }
 
         // ===== ACERVO ESCALÁVEL: carrega estudos/estudos.json =====
         (function () {
