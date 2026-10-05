@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Estudo #0007: Daat, o Conhecimento que Une — Contexto Compartilhado e o Custo do Saber Ausente - The Keter Protocol">
+    <title>Estudo #0007 - The Keter Protocol</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-dark: #0a0a0a;
+            --color-dark-secondary: #1a1a1a;
+            --color-dark-tertiary: #2d2d2d;
+            --color-gold: #d4af37;
+            --color-gold-light: #e6c547;
+            --color-white: #f5f5f5;
+            --color-white-secondary: #e0e0e0;
+            --color-accent: #c9a961;
+
+            --font-title: 'Cinzel', serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-dark);
+            color: var(--color-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background-color: var(--color-dark-secondary);
+            border-bottom: 1px solid var(--color-accent);
+            padding: 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background-color: transparent;
+            color: var(--color-gold);
+            text-decoration: none;
+            font-family: var(--font-title);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            border: 1px solid var(--color-gold);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .back-button:hover {
+            background-color: var(--color-gold);
+            color: var(--color-dark);
+        }
+
+        .header-title {
+            font-family: var(--font-title);
+            font-size: 1.3rem;
+            color: var(--color-gold);
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .study-hero {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .study-hero h1 {
+            font-family: var(--font-title);
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            color: var(--color-gold);
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .study-number {
+            font-family: var(--font-title);
+            font-size: 0.95rem;
+            color: var(--color-white-secondary);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .study-divider {
+            width: 80px;
+            height: 2px;
+            background: var(--color-gold);
+            margin: 1.5rem auto;
+            opacity: 0.7;
+        }
+
+        .study-hero p {
+            font-size: 1.05rem;
+            color: var(--color-white-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* ===== CONTENT SECTIONS ===== */
+        .content-section {
+            margin-bottom: 3.5rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .content-section h2 {
+            font-family: var(--font-title);
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            color: var(--color-gold);
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .content-section h3 {
+            font-family: var(--font-title);
+            font-size: 1.3rem;
+            color: var(--color-gold-light);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .content-section p {
+            font-size: 1rem;
+            color: var(--color-white-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
+            font-weight: 300;
+        }
+
+        .content-section ul,
+        .content-section ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .content-section li {
+            font-size: 1rem;
+            color: var(--color-white-secondary);
+            margin-bottom: 0.8rem;
+            line-height: 1.8;
+        }
+
+        .highlight {
+            color: var(--color-gold-light);
+            font-weight: 600;
+        }
+
+        .quote {
+            font-style: italic;
+            color: var(--color-gold);
+            border-left: 3px solid var(--color-gold);
+            padding-left: 2rem;
+            margin: 2rem 0;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        /* ===== COMPARISON TABLE ===== */
+        .table-container {
+            overflow-x: auto;
+            margin: 2rem 0;
+            border: 1px solid var(--color-accent);
+            background-color: var(--color-dark-secondary);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background-color: var(--color-dark-tertiary);
+            border-bottom: 2px solid var(--color-gold);
+            padding: 1.2rem;
+            text-align: left;
+            font-family: var(--font-title);
+            color: var(--color-gold);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        td {
+            padding: 1rem 1.2rem;
+            border-bottom: 1px solid var(--color-dark-tertiary);
+            color: var(--color-white-secondary);
+        }
+
+        tr:hover {
+            background-color: var(--color-dark-tertiary);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .cell-title {
+            color: var(--color-gold-light);
+            font-weight: 600;
+        }
+
+        /* ===== CODE BLOCKS ===== */
+        .code-block {
+            background-color: var(--color-dark-tertiary);
+            border-left: 3px solid var(--color-gold);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: var(--color-white-secondary);
+            overflow-x: auto;
+            line-height: 1.6;
+        }
+
+        /* ===== FIGURE (diagrama) ===== */
+        .figure {
+            margin: 2rem 0;
+            border: 1px solid var(--color-accent);
+            background-color: var(--color-dark-secondary);
+            padding: 1.5rem;
+        }
+
+        .figure svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .figure figcaption {
+            margin-top: 1.2rem;
+            font-size: 0.85rem;
+            color: var(--color-white-secondary);
+            font-style: italic;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--color-dark-secondary);
+            border-top: 1px solid var(--color-accent);
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer-back {
+            margin-bottom: 2rem;
+        }
+
+        .footer-credits {
+            font-size: 0.85rem;
+            color: var(--color-white-secondary);
+        }
+
+        .footer-credits strong {
+            color: var(--color-gold);
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== RESPONSIVENESS ===== */
+        @media (max-width: 768px) {
+            header {
+                padding: 1.5rem;
+            }
+
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            main {
+                padding: 2rem 1.5rem;
+            }
+
+            .study-hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .content-section h2 {
+                font-size: 1.3rem;
+            }
+
+            table {
+                font-size: 0.85rem;
+            }
+
+            th, td {
+                padding: 0.8rem;
+            }
+
+            .figure {
+                padding: 1rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-container">
+            <a href="../index.html" class="back-button">← Voltar à Página Inicial</a>
+            <div class="header-title">THE KETER PROTOCOL</div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <section class="study-hero">
+            <div class="study-number">Estudo #0007</div>
+            <h1>Daat, o Conhecimento que Une: Contexto Compartilhado e o Custo do Saber Ausente</h1>
+            <div class="study-divider"></div>
+            <p>A Cabala conta dez Sefirot, "e não onze" — mas ensina uma presença invisível entre Chochmá e Biná. Daat como modelo do conhecimento operacional que une dados e decisão, e do que acontece quando ele desaparece.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Introdução: a Sefirá que não é Sefirá</h2>
+            <p>O <em>Sefer Yetzirah</em> (1:4) afirma que as Sefirot são "dez, e não nove; dez, e não onze". Ainda assim, a tradição fala de <span class="highlight">Daat</span> (דעת, "conhecimento") como uma dimensão que se manifesta no ponto de encontro de <span class="highlight">Chochmá</span> (sabedoria, o lampejo intuitivo) e <span class="highlight">Biná</span> (compreensão, a elaboração analítica). Na escola Chabad, esse tripé — Chochmá, Biná, Daat — forma o acrônimo <span class="highlight">ChaBaD</span>, base do <em>Tanya</em> de Rabi Schneur Zalman de Liadi (1797).</p>
+            <p>A raiz verbal <em>yada</em> aparece em Gênesis 4:1 ("Adão <em>conheceu</em> Eva"): conhecer, aqui, não é possuir uma informação, é <em>unir-se</em> a ela. É essa a ideia que interessa à engenharia: conhecimento não é o dado armazenado, é o dado integrado ao contexto de quem decide.</p>
+            <p><em>Nota metodológica:</em> como nos estudos anteriores, as correspondências com engenharia são analogias pedagógicas, não afirmações históricas. Existem leituras divergentes sobre o estatuto de Daat (sefirá própria, substituta de Keter na árvore inferior, ou apenas função de união); este estudo adota a leitura de Chabad como ponte entre Chochmá e Biná.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Fundamentos: Chochmá, Biná e a Ponte</h2>
+            <h3>Chochmá — o sinal</h3>
+            <p>O ponto de insight, ainda sem forma: uma intuição de que algo está errado, um alerta, um valor fora do padrão. É a observação bruta.</p>
+            <h3>Biná — a análise</h3>
+            <p>O desdobramento do insight em estrutura: causas, relações, hipóteses, modelo. É a correlação de logs, métricas e traces.</p>
+            <h3>Daat — a integração</h3>
+            <p>O momento em que sinal e análise se fundem em <span class="highlight">saber que age</span>: a equipe <em>sabe</em> que aquele alerta significa "o cache esquentou errado" e <em>sabe</em> o que fazer. Sem Daat, há dados (Chochmá) e dashboards (Biná), mas ninguém decide. Daat é o runbook internalizado, o contexto de quem esteve lá.</p>
+        </section>
+
+        <figure class="figure">
+            <svg viewBox="0 0 850 400" role="img" aria-labelledby="fig7-title fig7-desc">
+                <title id="fig7-title">Chochmá, Biná e Daat como pipeline de conhecimento</title>
+                <desc id="fig7-desc">Dois círculos, Chochmá (sinal) e Biná (análise), convergem para um terceiro círculo central inferior, Daat (conhecimento integrado), que alimenta uma seta de decisão e ação.</desc>
+                <circle cx="230" cy="110" r="70" fill="#d4af37" fill-opacity="0.25" stroke="#d4af37" stroke-width="2"/>
+                <text x="230" y="105" text-anchor="middle" font-size="20" fill="#e6c547" style="font-family:'Cinzel',serif" font-weight="600">Chochmá</text>
+                <text x="230" y="128" text-anchor="middle" font-size="13" fill="#e0e0e0">sinal · insight</text>
+                <circle cx="620" cy="110" r="70" fill="#d4af37" fill-opacity="0.25" stroke="#d4af37" stroke-width="2"/>
+                <text x="620" y="105" text-anchor="middle" font-size="20" fill="#e6c547" style="font-family:'Cinzel',serif" font-weight="600">Biná</text>
+                <text x="620" y="128" text-anchor="middle" font-size="13" fill="#e0e0e0">análise · modelo</text>
+                <path d="M290,150 Q360,230 395,262" fill="none" stroke="#d4af37" stroke-width="2"/>
+                <path d="M560,150 Q490,230 455,262" fill="none" stroke="#d4af37" stroke-width="2"/>
+                <circle cx="425" cy="300" r="70" fill="none" stroke="#d4af37" stroke-width="2" stroke-dasharray="6 5"/>
+                <text x="425" y="296" text-anchor="middle" font-size="20" fill="#e6c547" style="font-family:'Cinzel',serif" font-weight="600">Daat</text>
+                <text x="425" y="318" text-anchor="middle" font-size="13" fill="#e0e0e0">contexto integrado</text>
+                <line x1="495" y1="300" x2="780" y2="300" stroke="#d4af37" stroke-width="2"/>
+                <path d="M780,300 l-14,-8 l0,16 Z" fill="#d4af37"/>
+                <text x="640" y="288" text-anchor="middle" font-size="13" fill="#e0e0e0">decisão que age</text>
+                <text x="425" y="392" text-anchor="middle" font-size="12" fill="#e0e0e0" font-style="italic">círculo tracejado: não é uma "camada" implantável, emerge da prática</text>
+            </svg>
+            <figcaption>Daat não é um terceiro componente ao lado de Chochmá e Biná: é o que acontece quando os dois se encontram em alguém (ou numa equipe) capaz de agir. Por isso o contorno é tracejado.</figcaption>
+        </figure>
+
+        <section class="content-section">
+            <h2>Mapa de Correspondências</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Conceito Cabalístico</th>
+                            <th>Leitura Técnica (analogia)</th>
+                            <th>Consequência de Projeto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="cell-title">Chochmá (sabedoria)</td>
+                            <td>Sinal bruto: alerta, métrica, anomalia</td>
+                            <td>Instrumente para que o insight apareça cedo, antes do usuário reclamar</td>
+                        </tr>
+                        <tr>
+                            <td class="cell-title">Biná (compreensão)</td>
+                            <td>Análise: correlação, dashboards, post-mortem</td>
+                            <td>Torne o sinal explicável — um alerta sem contexto é ruído</td>
+                        </tr>
+                        <tr>
+                            <td class="cell-title">Daat (conhecimento)</td>
+                            <td>Contexto operacional compartilhado: runbooks vivos, memória da equipe</td>
+                            <td>Trate conhecimento tácito como dependência crítica: documente, ensaie, distribua</td>
+                        </tr>
+                        <tr>
+                            <td class="cell-title">"Dez, e não onze"</td>
+                            <td>Daat não entra na contagem dos componentes</td>
+                            <td>O conhecimento não aparece no diagrama de arquitetura — por isso é esquecido no inventário de riscos</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Aplicação: Inventariar o Daat</h2>
+            <p>Faça a pergunta que o diagrama não faz: <em>quem sabe?</em> Para cada sistema crítico, liste que conhecimento é necessário para operá-lo e onde ele mora.</p>
+            <div class="code-block">
+sistema:        pagamentos-core
+chochma:        alertas de latência p99, taxa de erro por rota
+bina:           dashboards + traces + post-mortems anteriores
+daat:           - quem sabe desligar a feature flag X sem efeito colateral?
+                - qual deploy NUNCA deve ser parcial?
+                - o runbook foi executado nos últimos 90 dias?
+risco:          daat concentrado em 1-2 pessoas = ponto único de falha
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Checklist de Aplicação</h2>
+            <ol>
+                <li>Para cada sistema crítico, registre quem detém o conhecimento operacional e onde ele está escrito.</li>
+                <li>Execute runbooks em exercícios periódicos (game days): conhecimento não ensaiado é conhecimento presumido.</li>
+                <li>Remova código e flags mortos; o conhecimento sobre o que "ainda é usado" apodrece primeiro.</li>
+                <li>Trate implantação parcial e estado inconsistente entre servidores como risco de primeira classe, com verificação automática.</li>
+                <li>Faça post-mortems registrarem o que a equipe <em>não sabia</em>, não apenas o que falhou.</li>
+            </ol>
+        </section>
+
+        <section class="content-section">
+            <h2>Visão do Oráculo e do Guardião</h2>
+            <h3>O Oráculo — o que o padrão revela</h3>
+            <p>Quando Daat falta, os sinais existem e as análises existem, mas a ponte entre eles não: o sistema tem todos os dados e ninguém sabe o que significam a tempo.</p>
+            <h3>Exemplo real</h3>
+            <p>Em 1º de agosto de 2012, a Knight Capital Group implantou um novo software de negociação em oito servidores, mas um deles não recebeu o código novo. Uma flag antiga, reaproveitada para a nova funcionalidade, reativou nesse servidor um código legado (conhecido como "Power Peg") que estava morto havia anos. Em cerca de 45 minutos, o servidor enviou ordens indevidas ao mercado; a empresa perdeu aproximadamente US$ 440 milhões. A SEC concluiu que a Knight não tinha procedimentos escritos para revisar a implantação nem controles adequados de risco (fonte: SEC, Release No. 34-70694, "In the Matter of Knight Capital Americas LLC", out. 2013). Os alertas chegaram, mas o conhecimento de que um servidor ficara para trás, e do que a flag significava, não estava em ninguém a tempo.</p>
+            <h3>O Guardião — o que fazer</h3>
+            <p>Faça do conhecimento operacional um artefato de primeira classe: verifique automaticamente que todos os nós rodam a mesma versão, aposente código e flags mortos e exija um procedimento de implantação escrito e revisado — o masach do #0006 aplicado ao saber.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Referências e Leituras Complementares</h2>
+            <ul>
+                <li><span class="highlight">Sefer Yetzirah</span> 1:4 — "dez, e não nove; dez, e não onze"</li>
+                <li><span class="highlight">Gênesis 4:1</span> — <em>yada</em> como conhecimento-união</li>
+                <li><span class="highlight">Schneur Zalman de Liadi</span> — Tanya (Likutei Amarim) [1797], sobre Chochmá, Biná e Daat (ChaBaD)</li>
+                <li><span class="highlight">Scholem, Gershom</span> — Major Trends in Jewish Mysticism [1941]</li>
+                <li><span class="highlight">U.S. SEC</span> — Release No. 34-70694, In the Matter of Knight Capital Americas LLC [2013]</li>
+                <li><span class="highlight">Estudos #0004 e #0006</span> deste acervo — Shevirat HaKelim e o masach</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-back">
+            <a href="../index.html" class="back-button">← Voltar à Página Inicial</a>
+        </div>
+        <div class="footer-credits">
+            <strong>The Keter Protocol</strong> — Estudo #0007<br>
+            Daat, o Conhecimento que Une: Contexto Compartilhado e o Custo do Saber Ausente<br>
+            <br>
+            © 2026 | Convergência entre Sabedoria Ancestral e Engenharia Moderna<br>
+            Todos os direitos reservados.
+        </div>
+    </footer>
+</body>
+</html>
