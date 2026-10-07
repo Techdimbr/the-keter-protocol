@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Estudo #0007: Da&#39;at — o Conhecimento que Liga e o Estado Real do Sistema - The Keter Protocol">
+    <title>Estudo #0007 - The Keter Protocol</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-dark: #0a0a0a;
+            --color-dark-secondary: #1a1a1a;
+            --color-dark-tertiary: #2d2d2d;
+            --color-gold: #d4af37;
+            --color-gold-light: #e6c547;
+            --color-white: #f5f5f5;
+            --color-white-secondary: #e0e0e0;
+            --color-accent: #c9a961;
+
+            --font-title: 'Cinzel', serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-dark);
+            color: var(--color-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background-color: var(--color-dark-secondary);
+            border-bottom: 1px solid var(--color-accent);
+            padding: 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background-color: transparent;
+            color: var(--color-gold);
+            text-decoration: none;
+            font-family: var(--font-title);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            border: 1px solid var(--color-gold);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .back-button:hover {
+            background-color: var(--color-gold);
+            color: var(--color-dark);
+        }
+
+        .header-title {
+            font-family: var(--font-title);
+            font-size: 1.3rem;
+            color: var(--color-gold);
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .study-hero {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .study-hero h1 {
+            font-family: var(--font-title);
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            color: var(--color-gold);
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .study-number {
+            font-family: var(--font-title);
+            font-size: 0.95rem;
+            color: var(--color-white-secondary);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .study-divider {
+            width: 80px;
+            height: 2px;
+            background: var(--color-gold);
+            margin: 1.5rem auto;
+            opacity: 0.7;
+        }
+
+        .study-hero p {
+            font-size: 1.05rem;
+            color: var(--color-white-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* ===== CONTENT SECTIONS ===== */
+        .content-section {
+            margin-bottom: 3.5rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .content-section h2 {
+            font-family: var(--font-title);
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            color: var(--color-gold);
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .content-section h3 {
+            font-family: var(--font-title);
+            font-size: 1.3rem;
+            color: var(--color-gold-light);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .content-section p {
+            font-size: 1rem;
+            color: var(--color-white-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
+            font-weight: 300;
+        }
+
+        .content-section ul,
+        .content-section ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .content-section li {
+            font-size: 1rem;
+            color: var(--color-white-secondary);
+            margin-bottom: 0.8rem;
+            line-height: 1.8;
+        }
+
+        .highlight {
+            color: var(--color-gold-light);
+            font-weight: 600;
+        }
+
+        .quote {
+            font-style: italic;
+            color: var(--color-gold);
+            border-left: 3px solid var(--color-gold);
+            padding-left: 2rem;
+            margin: 2rem 0;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        /* ===== COMPARISON TABLE ===== */
+        .table-container {
+            overflow-x: auto;
+            margin: 2rem 0;
+            border: 1px solid var(--color-accent);
+            background-color: var(--color-dark-secondary);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background-color: var(--color-dark-tertiary);
+            border-bottom: 2px solid var(--color-gold);
+            padding: 1.2rem;
+            text-align: left;
+            font-family: var(--font-title);
+            color: var(--color-gold);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        td {
+            padding: 1rem 1.2rem;
+            border-bottom: 1px solid var(--color-dark-tertiary);
+            color: var(--color-white-secondary);
+        }
+
+        tr:hover {
+            background-color: var(--color-dark-tertiary);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .cell-title {
+            color: var(--color-gold-light);
+            font-weight: 600;
+        }
+
+        /* ===== CODE BLOCKS ===== */
+        .code-block {
+            background-color: var(--color-dark-tertiary);
+            border-left: 3px solid var(--color-gold);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: var(--color-white-secondary);
+            overflow-x: auto;
+            line-height: 1.6;
+        }
+
+        /* ===== FIGURE (diagrama) ===== */
+        .figure {
+            margin: 2rem 0;
+            border: 1px solid var(--color-accent);
+            background-color: var(--color-dark-secondary);
+            padding: 1.5rem;
+        }
+
+        .figure svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .figure figcaption {
+            margin-top: 1.2rem;
+            font-size: 0.85rem;
+            color: var(--color-white-secondary);
+            font-style: italic;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--color-dark-secondary);
+            border-top: 1px solid var(--color-accent);
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer-back {
+            margin-bottom: 2rem;
+        }
+
+        .footer-credits {
+            font-size: 0.85rem;
+            color: var(--color-white-secondary);
+        }
+
+        .footer-credits strong {
+            color: var(--color-gold);
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== RESPONSIVENESS ===== */
+        @media (max-width: 768px) {
+            header {
+                padding: 1.5rem;
+            }
+
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            main {
+                padding: 2rem 1.5rem;
+            }
+
+            .study-hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .content-section h2 {
+                font-size: 1.3rem;
+            }
+
+            table {
+                font-size: 0.85rem;
+            }
+
+            th, td {
+                padding: 0.8rem;
+            }
+
+            .figure {
+                padding: 1rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="../index.html" class="back-button">← Voltar à Página Inicial</a>
+            <div class="header-title">THE KETER PROTOCOL</div>
+        </div>
+    </header>
+
+    <main>
+        <section class="study-hero">
+            <div class="study-number">Estudo #0007</div>
+            <h1>Da'at: o Conhecimento que Liga e o Estado Real do Sistema</h1>
+            <div class="study-divider"></div>
+            <p>A sefirá "oculta" que une Chochmah e Binah como modelo para a camada que une projeto e execução: saber, de fato, o que está rodando em produção.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Introdução: a Sefirá que Não Conta</h2>
+            <p>O Sefer Yetzirah (1:4) afirma que as Sefirot são "dez e não nove, dez e não onze". Ainda assim, a tradição cabalística fala de <span class="highlight">Da'at</span> (דעת, "Conhecimento"), que não é contada entre as dez: nas versões do esquema em que ela aparece, fica entre <span class="highlight">Chochmah</span> (Sabedoria, o lampejo) e <span class="highlight">Binah</span> (Entendimento, a elaboração), e no pensamento Chabad compõe com elas o tripé <em>Chabad</em> (Chochmah-Binah-Da'at). Em algumas formulações, Da'at ocupa o lugar de Keter para manter o total em dez, e por isso é descrita como Keter "revelado" na dimensão da mente.</p>
+            <p>A função de Da'at é <em>ligar</em>: a palavra hebraica carrega o sentido de união íntima, como em "Adão <em>conheceu</em> Eva" (Gênesis 4:1). Conhecimento aqui não é informação armazenada; é a ponte que faz o insight tornar-se compreensão aplicada.</p>
+            <p><em>Nota metodológica:</em> como nos estudos anteriores, a correspondência com engenharia é uma analogia pedagógica, não uma afirmação histórica. As posições sobre a contagem de Da'at variam entre escolas; apresentamos a leitura mais difundida.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Fundamentos: Insight, Elaboração e a Ponte</h2>
+            <h3>Chochmah, Binah, Da'at</h3>
+            <p>Chochmah é o ponto sem dimensão, a ideia inteira em um instante. Binah a expande em estrutura e detalhe. Sem Da'at, as duas ficam desconectadas: uma ideia brilhante que não se desdobra, ou um detalhamento sem raiz no propósito original. Da'at é o ato de manter ambas presentes na mesma consciência.</p>
+            <h3>Leitura técnica</h3>
+            <p>No Estudo #0006, o pipeline desce de Atzilut a Assiah. Falta ali uma pergunta: <span class="highlight">quem sabe, neste momento, o que realmente existe em cada mundo?</span> Esse é o papel de Da'at em um sistema: o conhecimento verificado do estado real. Inventário de versões em execução, configuração efetiva, dependências vivas, o que cada flag faz hoje, e não o que o repositório diz que deveria fazer.</p>
+        </section>
+
+        <figure class="figure">
+            <svg viewBox="0 0 850 330" role="img" aria-labelledby="fig7-title fig7-desc">
+                <title id="fig7-title">Da'at como ponte entre projeto e execução</title>
+                <desc id="fig7-desc">Chochmah (intenção) e Binah (projeto detalhado) no alto, Da'at ao centro como camada de verificação do estado real, e o sistema em produção na base.</desc>
+                <rect x="60" y="20" width="300" height="80" rx="10" fill="#d4af37" fill-opacity="0.2" stroke="#d4af37" stroke-width="2"/>
+                <text x="210" y="55" text-anchor="middle" font-size="18" fill="#e6c547" style="font-family:'Cinzel',serif" font-weight="600">Chochmah</text>
+                <text x="210" y="80" text-anchor="middle" font-size="13" fill="#e0e0e0">Intenção / ideia / ADR</text>
+                <rect x="490" y="20" width="300" height="80" rx="10" fill="#d4af37" fill-opacity="0.2" stroke="#d4af37" stroke-width="2"/>
+                <text x="640" y="55" text-anchor="middle" font-size="18" fill="#e6c547" style="font-family:'Cinzel',serif" font-weight="600">Binah</text>
+                <text x="640" y="80" text-anchor="middle" font-size="13" fill="#e0e0e0">Projeto detalhado / código / IaC</text>
+                <rect x="285" y="140" width="280" height="80" rx="40" fill="#d4af37" fill-opacity="0.45" stroke="#d4af37" stroke-width="2" stroke-dasharray="6 4"/>
+                <text x="425" y="175" text-anchor="middle" font-size="18" fill="#f5f5f5" style="font-family:'Cinzel',serif" font-weight="600">Da'at</text>
+                <text x="425" y="200" text-anchor="middle" font-size="13" fill="#f5f5f5">Estado real verificado</text>
+                <line x1="210" y1="100" x2="340" y2="145" stroke="#d4af37" stroke-width="2"/>
+                <line x1="640" y1="100" x2="510" y2="145" stroke="#d4af37" stroke-width="2"/>
+                <rect x="185" y="260" width="480" height="55" rx="10" fill="#d4af37" fill-opacity="0.85" stroke="#d4af37" stroke-width="2"/>
+                <text x="425" y="293" text-anchor="middle" font-size="15" fill="#0a0a0a" font-weight="600">Produção: o que de fato está rodando</text>
+                <line x1="425" y1="220" x2="425" y2="258" stroke="#d4af37" stroke-width="2"/>
+            </svg>
+            <figcaption>Da'at, tracejada por não ser contada entre as dez, liga a intenção e o projeto ao estado verificado da produção.</figcaption>
+        </figure>
+
+        <section class="content-section">
+            <h2>Mapa de Correspondências</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr><th>Conceito Cabalístico</th><th>Leitura Técnica (analogia)</th><th>Consequência de Projeto</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="cell-title">Chochmah</td><td>Intenção e decisão original (ADR)</td><td>Registre o porquê para que o projeto possa ser reconciliado com ele depois</td></tr>
+                        <tr><td class="cell-title">Binah</td><td>Projeto detalhado: código, IaC, configuração</td><td>Tudo declarado e versionado; o declarado é a hipótese</td></tr>
+                        <tr><td class="cell-title">Da'at</td><td>Inventário e estado efetivo verificados em runtime</td><td>Meça o que está rodando; não presuma a partir do repositório</td></tr>
+                        <tr><td class="cell-title">Da'at como união íntima</td><td>Reconciliação contínua entre declarado e observado</td><td>Detecte e alerte sobre desvio de configuração (drift)</td></tr>
+                        <tr><td class="cell-title">"Dez e não onze"</td><td>Contenção: o conhecimento não vira mais um componente frágil</td><td>Inventário gerado automaticamente, nunca planilha mantida à mão</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Aplicação: Reconciliar Declarado e Observado</h2>
+            <div class="code-block">
+declarado (Binah):   versão 2.4 em todos os 8 servidores
+observado (Da'at):   consulta ao runtime de cada servidor
+reconciliação:       7 servidores em 2.4, 1 servidor em 2.3  → ALERTA, bloqueia o rollout
+            </div>
+            <p>A lógica é a de controladores de reconciliação (como em orquestradores de contêineres): comparar continuamente o estado desejado com o estado observado e agir sobre a diferença. O ponto de Da'at é que a observação precisa ser independente da declaração, caso contrário o sistema apenas confirma a própria crença.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Checklist de Aplicação</h2>
+            <ol>
+                <li>Gere automaticamente um inventário do que roda em produção (versões, hashes de artefato, configuração efetiva).</li>
+                <li>Compare, em cada deploy, o estado observado em todos os nós com o declarado; falhe o rollout se divergirem.</li>
+                <li>Verifique o resultado do deploy em cada servidor individualmente, não apenas por um indicador agregado.</li>
+                <li>Remova código morto e flags antigas; reutilizar uma flag com novo significado exige que todos os nós tenham o mesmo código.</li>
+                <li>Mantenha um mecanismo de parada rápida (kill switch) e treine seu uso.</li>
+                <li>Alerte sobre drift de configuração como incidente em potencial, não como detalhe.</li>
+            </ol>
+        </section>
+
+        <section class="content-section">
+            <h2>Visão do Oráculo e do Guardião</h2>
+            <h3>O Oráculo — o que o padrão revela</h3>
+            <p>Quando a organização acredita saber o que roda em produção mas não verifica, o projeto e a realidade divergem em silêncio. O dano aparece de uma vez, quando o ramo esquecido é ativado.</p>
+            <h3>Exemplo real</h3>
+            <p>Em 1º de agosto de 2012, a Knight Capital Group implantou um novo software de negociação em seus servidores, mas o deploy foi aplicado manualmente e um dos oito servidores não recebeu o código novo. O novo código reaproveitava um indicador (flag) que, no código antigo ainda presente naquele servidor, acionava uma funcionalidade obsoleta chamada "Power Peg". Ao abrir o mercado, esse servidor passou a emitir ordens indevidas. Em cerca de 45 minutos, a empresa acumulou posições não intencionais e perdeu mais de US$ 460 milhões. Segundo a ordem da SEC, a firma não tinha procedimentos de revisão que detectassem a falha de implantação nem um plano para reagir ao problema (fonte: SEC, <em>In the Matter of Knight Capital Americas LLC</em>, Release nº 70694, 2013).</p>
+            <h3>O Guardião — o que fazer</h3>
+            <p>Automatize o deploy, verifique o estado resultante em cada nó antes de abrir a operação, remova funcionalidades mortas e nunca reutilize uma flag sem garantir que nenhum nó ainda carrega o significado antigo.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Referências e Leituras Complementares</h2>
+            <ul>
+                <li><span class="highlight">Sefer Yetzirah</span> 1:4 — "dez e não nove, dez e não onze"</li>
+                <li><span class="highlight">Gênesis 4:1</span> — o sentido de "conhecer" (yada) como união</li>
+                <li><span class="highlight">Schneur Zalman de Liadi</span> — Tanya (Likutei Amarim), sobre Chochmah-Binah-Da'at (Chabad)</li>
+                <li><span class="highlight">Scholem, Gershom</span> — Major Trends in Jewish Mysticism [1941]</li>
+                <li><span class="highlight">U.S. Securities and Exchange Commission</span> — In the Matter of Knight Capital Americas LLC, Exchange Act Release No. 70694 [2013]</li>
+                <li><span class="highlight">Hightower, Burns, Beda</span> — Kubernetes: Up and Running (modelo de reconciliação entre estado desejado e observado)</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-back">
+            <a href="../index.html" class="back-button">← Voltar à Página Inicial</a>
+        </div>
+        <div class="footer-credits">
+            <strong>The Keter Protocol</strong> — Estudo #0007<br>
+            Da'at: o Conhecimento que Liga e o Estado Real do Sistema<br>
+            <br>
+            © 2026 | Convergência entre Sabedoria Ancestral e Engenharia Moderna<br>
+            Todos os direitos reservados.
+        </div>
+    </footer>
+</body>
+</html>

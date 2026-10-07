@@ -70,5 +70,17 @@
   ],
   "data": "2026-10-04",
   "url": "estudos/estudo-0006.html"
+ },
+ {
+  "n": 7,
+  "titulo": "Da'at: o Conhecimento que Liga e o Estado Real do Sistema",
+  "resumo": "Chochmah, Binah e Da'at como modelo de reconciliação entre o declarado e o observado: saber, de fato, o que roda em produção.",
+  "tags": [
+   "Da'at",
+   "Observabilidade",
+   "Deploy"
+  ],
+  "data": "2026-10-07",
+  "url": "estudos/estudo-0007.html"
  }
 ]
