@@ -70,5 +70,17 @@
   ],
   "data": "2026-10-04",
   "url": "estudos/estudo-0006.html"
+ },
+ {
+  "n": 7,
+  "titulo": "Chesed, Gevurah e Tiferet: Backpressure e o Equilíbrio sob Carga",
+  "resumo": "Dádiva, limite e harmonia como modelo de retries, rate limiting e degradação graciosa: como um sistema equilibra generosidade e contenção sob carga.",
+  "tags": [
+   "Sefirot",
+   "Resiliência",
+   "Backpressure"
+  ],
+  "data": "2026-10-08",
+  "url": "estudos/estudo-0007.html"
  }
 ]
