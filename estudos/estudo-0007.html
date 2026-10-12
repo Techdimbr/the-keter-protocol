@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Estudo #0007: Da'at, a Sefirá Invisível — o Conhecimento que Une as Partes - The Keter Protocol">
+    <title>Estudo #0007 - The Keter Protocol</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-dark: #0a0a0a;
+            --color-dark-secondary: #1a1a1a;
+            --color-dark-tertiary: #2d2d2d;
+            --color-gold: #d4af37;
+            --color-gold-light: #e6c547;
+            --color-white: #f5f5f5;
+            --color-white-secondary: #e0e0e0;
+            --color-accent: #c9a961;
+
+            --font-title: 'Cinzel', serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-dark);
+            color: var(--color-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background-color: var(--color-dark-secondary);
+            border-bottom: 1px solid var(--color-accent);
+            padding: 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background-color: transparent;
+            color: var(--color-gold);
+            text-decoration: none;
+            font-family: var(--font-title);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            border: 1px solid var(--color-gold);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .back-button:hover {
+            background-color: var(--color-gold);
+            color: var(--color-dark);
+        }
+
+        .header-title {
+            font-family: var(--font-title);
+            font-size: 1.3rem;
+            color: var(--color-gold);
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .study-hero {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .study-hero h1 {
+            font-family: var(--font-title);
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            color: var(--color-gold);
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .study-number {
+            font-family: var(--font-title);
+            font-size: 0.95rem;
+            color: var(--color-white-secondary);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .study-divider {
+            width: 80px;
+            height: 2px;
+            background: var(--color-gold);
+            margin: 1.5rem auto;
+            opacity: 0.7;
+        }
+
+        .study-hero p {
+            font-size: 1.05rem;
+            color: var(--color-white-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* ===== CONTENT SECTIONS ===== */
+        .content-section {
+            margin-bottom: 3.5rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .content-section h2 {
+            font-family: var(--font-title);
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            color: var(--color-gold);
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .content-section h3 {
+            font-family: var(--font-title);
+            font-size: 1.3rem;
+            color: var(--color-gold-light);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .content-section p {
+            font-size: 1rem;
+            color: var(--color-white-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
+            font-weight: 300;
+        }
+
+        .content-section ul,
+        .content-section ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .content-section li {
+            font-size: 1rem;
+            color: var(--color-white-secondary);
+            margin-bottom: 0.8rem;
+            line-height: 1.8;
+        }
+
+        .highlight {
+            color: var(--color-gold-light);
+            font-weight: 600;
+        }
+
+        .quote {
+            font-style: italic;
+            color: var(--color-gold);
+            border-left: 3px solid var(--color-gold);
+            padding-left: 2rem;
+            margin: 2rem 0;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        /* ===== COMPARISON TABLE ===== */
+        .table-container {
+            overflow-x: auto;
+            margin: 2rem 0;
+            border: 1px solid var(--color-accent);
+            background-color: var(--color-dark-secondary);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background-color: var(--color-dark-tertiary);
+            border-bottom: 2px solid var(--color-gold);
+            padding: 1.2rem;
+            text-align: left;
+            font-family: var(--font-title);
+            color: var(--color-gold);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        td {
+            padding: 1rem 1.2rem;
+            border-bottom: 1px solid var(--color-dark-tertiary);
+            color: var(--color-white-secondary);
+        }
+
+        tr:hover {
+            background-color: var(--color-dark-tertiary);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .cell-title {
+            color: var(--color-gold-light);
+            font-weight: 600;
+        }
+
+        /* ===== CODE BLOCKS ===== */
+        .code-block {
+            background-color: var(--color-dark-tertiary);
+            border-left: 3px solid var(--color-gold);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: var(--color-white-secondary);
+            overflow-x: auto;
+            line-height: 1.6;
+        }
+
+        /* ===== FIGURE (diagrama) ===== */
+        .figure {
+            margin: 2rem 0;
+            border: 1px solid var(--color-accent);
+            background-color: var(--color-dark-secondary);
+            padding: 1.5rem;
+        }
+
+        .figure svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .figure figcaption {
+            margin-top: 1.2rem;
+            font-size: 0.85rem;
+            color: var(--color-white-secondary);
+            font-style: italic;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--color-dark-secondary);
+            border-top: 1px solid var(--color-accent);
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer-back {
+            margin-bottom: 2rem;
+        }
+
+        .footer-credits {
+            font-size: 0.85rem;
+            color: var(--color-white-secondary);
+        }
+
+        .footer-credits strong {
+            color: var(--color-gold);
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== RESPONSIVENESS ===== */
+        @media (max-width: 768px) {
+            header {
+                padding: 1.5rem;
+            }
+
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            main {
+                padding: 2rem 1.5rem;
+            }
+
+            .study-hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .content-section h2 {
+                font-size: 1.3rem;
+            }
+
+            table {
+                font-size: 0.85rem;
+            }
+
+            th, td {
+                padding: 0.8rem;
+            }
+
+            .figure {
+                padding: 1rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-container">
+            <a href="../index.html" class="back-button">← Voltar à Página Inicial</a>
+            <div class="header-title">THE KETER PROTOCOL</div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <section class="study-hero">
+            <div class="study-number">Estudo #0007</div>
+            <h1>Da'at, a Sefirá Invisível: o Conhecimento que Une as Partes</h1>
+            <div class="study-divider"></div>
+            <p>"Dez, e não nove; dez, e não onze." A tradição conta dez Sefirot, mas fala de uma décima primeira presença que não entra na conta — Da'at, o Conhecimento. Este estudo a lê como a camada que todo sistema distribuído precisa e que quase nunca aparece no diagrama: o contexto compartilhado que faz as partes funcionarem como um todo.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Introdução: o que Falta no Diagrama</h2>
+            <p>Os Estudos #0002 e #0005 percorreram as dez Sefirot e a raiz de confiança em <span class="highlight">Keter</span>. Resta uma pergunta que a própria tradição deixa aberta: se são dez, o que é <span class="highlight">Da'at</span> (דַּעַת, "conhecimento")? Ela aparece em muitos diagramas entre <span class="highlight">Chokhmah</span> (Sabedoria) e <span class="highlight">Binah</span> (Compreensão), e abaixo de Keter, mas não é contada entre as dez.</p>
+            <p>A razão textual está no <em>Sefer Yetzirah</em> (1:4), que afirma serem as Sefirot "dez, e não nove; dez, e não onze". Na tradição luriânica e em Chabad, Da'at ocupa o lugar de Keter na tríade intelectual — <em>Chabad</em> é o acrônimo de Chokhmah-Binah-Da'at — de modo que, quando se conta com Keter, Da'at fica "oculta", e vice-versa. Em ambos os casos o ensinamento é o mesmo: Da'at não é uma décima primeira peça, é a <span class="highlight">união</span> entre as peças.</p>
+            <p><em>Nota metodológica:</em> como nos estudos anteriores, as correspondências com engenharia são analogias pedagógicas, não afirmações históricas.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Fundamentos: Conhecer como Unir</h2>
+            <h3>Da'at em Gênesis 4:1</h3>
+            <p>A raiz <em>y-d-'</em> em hebraico bíblico não designa apenas saber um fato, mas <span class="highlight">conhecer por vínculo</span>: "E Adão <em>conheceu</em> Eva, sua mulher, e ela concebeu" (Gênesis 4:1). Conhecimento, aqui, é o ponto em que duas partes distintas se tornam uma relação capaz de gerar algo novo. É por isso que a tradição posiciona Da'at no ponto de encontro de Chokhmah e Binah: a intuição bruta (Chokhmah) e a análise estruturada (Binah) só produzem uma conclusão aplicável quando se unem em Da'at.</p>
+            <h3>A Ponte entre o Intelecto e a Emoção</h3>
+            <p>Na psicologia cabalística, Da'at também é o que conecta o intelecto (as três primeiras Sefirot) ao mundo emocional (as seguintes): sem ela, uma ideia permanece correta e inerte; com ela, torna-se convicção que move a ação.</p>
+        </section>
+
+        <figure class="figure">
+            <svg viewBox="0 0 760 520" role="img" aria-labelledby="fig7-title fig7-desc">
+                <title id="fig7-title">Da'at entre Chokhmah e Binah, abaixo de Keter</title>
+                <desc id="fig7-desc">Keter no topo; Chokhmah e Binah abaixo, em lados opostos; entre elas, um círculo tracejado representando Da'at, a união que não é contada entre as dez Sefirot. Setas partem de Chokhmah e Binah para Da'at e dela para a camada de ação abaixo.</desc>
+                <line x1="380" y1="90" x2="190" y2="220" stroke="#d4af37" stroke-width="2"/>
+                <line x1="380" y1="90" x2="570" y2="220" stroke="#d4af37" stroke-width="2"/>
+                <line x1="190" y1="220" x2="570" y2="220" stroke="#d4af37" stroke-width="1" stroke-dasharray="4 5" opacity="0.6"/>
+                <line x1="190" y1="220" x2="380" y2="310" stroke="#d4af37" stroke-width="1.5"/>
+                <line x1="570" y1="220" x2="380" y2="310" stroke="#d4af37" stroke-width="1.5"/>
+                <line x1="380" y1="90" x2="380" y2="170" stroke="#d4af37" stroke-width="1" stroke-dasharray="4 5" opacity="0.6"/>
+                <circle cx="380" cy="60" r="38" fill="#d4af37" fill-opacity="0.25" stroke="#d4af37" stroke-width="2"/>
+                <text x="380" y="66" text-anchor="middle" font-size="16" fill="#e6c547" style="font-family:'Cinzel',serif" font-weight="600">Keter</text>
+                <circle cx="190" cy="220" r="38" fill="#d4af37" fill-opacity="0.25" stroke="#d4af37" stroke-width="2"/>
+                <text x="190" y="225" text-anchor="middle" font-size="14" fill="#e6c547" style="font-family:'Cinzel',serif" font-weight="600">Chokhmah</text>
+                <circle cx="570" cy="220" r="38" fill="#d4af37" fill-opacity="0.25" stroke="#d4af37" stroke-width="2"/>
+                <text x="570" y="225" text-anchor="middle" font-size="14" fill="#e6c547" style="font-family:'Cinzel',serif" font-weight="600">Binah</text>
+                <circle cx="380" cy="200" r="34" fill="none" stroke="#f5f5f5" stroke-width="2" stroke-dasharray="6 5"/>
+                <text x="380" y="205" text-anchor="middle" font-size="14" fill="#f5f5f5" style="font-family:'Cinzel',serif">Da'at</text>
+                <text x="380" y="262" text-anchor="middle" font-size="12" fill="#e0e0e0" font-style="italic">não contada entre as dez</text>
+                <rect x="250" y="360" width="260" height="56" rx="8" fill="#d4af37" fill-opacity="0.18" stroke="#d4af37" stroke-width="1.5"/>
+                <text x="380" y="394" text-anchor="middle" font-size="14" fill="#e0e0e0">Sefirot emocionais: ação</text>
+                <line x1="380" y1="310" x2="380" y2="358" stroke="#d4af37" stroke-width="1.5"/>
+                <path d="M380,358 l-7,-12 l14,0 Z" fill="#d4af37"/>
+                <text x="380" y="470" text-anchor="middle" font-size="13" fill="#e0e0e0">Leitura técnica: contexto compartilhado = a união entre intuição e análise, antes da ação</text>
+            </svg>
+            <figcaption>Da'at ocupa o ponto de união entre Chokhmah e Binah; é tracejada porque não é uma décima primeira Sefirá, e sim o que une as demais.</figcaption>
+        </figure>
+
+        <section class="content-section">
+            <h2>Mapa de Correspondências: Da'at como Contexto Compartilhado</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Conceito Cabalístico</th>
+                            <th>Leitura Técnica (analogia)</th>
+                            <th>Consequência de Projeto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="cell-title">"Dez, e não onze"</td>
+                            <td>O plano de controle e o contexto compartilhado não são mais um serviço no diagrama</td>
+                            <td>Não conte o contrato comum como "mais um componente": ele é o que dá sentido aos demais</td>
+                        </tr>
+                        <tr>
+                            <td class="cell-title">Chokhmah</td>
+                            <td>Intuição bruta: telemetria, sinal, hipótese</td>
+                            <td>Colete sinais sem filtrá-los cedo demais</td>
+                        </tr>
+                        <tr>
+                            <td class="cell-title">Binah</td>
+                            <td>Análise estruturada: modelo, esquema, tipagem</td>
+                            <td>Formalize o que o sinal significa</td>
+                        </tr>
+                        <tr>
+                            <td class="cell-title">Da'at (conhecer = unir)</td>
+                            <td>Vocabulário, unidades e contratos compartilhados entre times e serviços</td>
+                            <td>Torne explícito e verificável tudo o que "todo mundo sabe" (unidades, fusos, semântica de campos)</td>
+                        </tr>
+                        <tr>
+                            <td class="cell-title">Ponte intelecto → ação</td>
+                            <td>Conhecimento operacional: runbooks, alertas acionáveis</td>
+                            <td>Informação sem caminho até a ação é dado morto</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>A Falha de Da'at: Quando Duas Partes Corretas Não se Conhecem</h2>
+            <p>Um sistema pode ter componentes corretos isoladamente e ainda assim falhar, porque o que os une não foi explicitado. É a falha típica de integração: cada parte cumpre sua especificação, mas as especificações assumem coisas diferentes. A cura não é mais código dentro de cada parte, e sim tornar a <span class="highlight">união</span> um objeto de primeira classe: contratos testados (<em>contract tests</em>), tipos que carregam unidade, um glossário de domínio mantido junto do código.</p>
+            <div class="code-block">
+chokhmah: sinal bruto chega           → "a força vale 4.45"
+binah:    modelo o interpreta         → "força, em qual unidade?"
+da'at:    contrato compartilhado      → Force&lt;Newton&gt; vs Force&lt;PoundForce&gt;
+          sem da'at, ambos "corretos"  → e o conjunto, errado
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Checklist de Aplicação</h2>
+            <ol>
+                <li>Liste o que "todo mundo sabe" na equipe (unidades, fusos, moeda, semântica de campos) e escreva no contrato.</li>
+                <li>Use tipos que carregam unidade e significado, em vez de números e strings nus.</li>
+                <li>Teste a fronteira entre serviços com contract tests, não apenas cada lado isoladamente.</li>
+                <li>Mantenha um glossário de domínio versionado junto do código.</li>
+                <li>Garanta que cada alerta aponte para uma ação: informação sem ação é dado morto.</li>
+                <li>Revise integrações entre equipes como revisa código: a união também tem donos.</li>
+            </ol>
+        </section>
+
+        <section class="content-section">
+            <h2>Visão do Oráculo e do Guardião</h2>
+            <h3>O Oráculo — o que o padrão revela</h3>
+            <p>Quando duas partes corretas falham juntas, o defeito não está em nenhuma delas: está no espaço entre elas, o lugar onde Da'at deveria estar.</p>
+            <h3>Exemplo real</h3>
+            <p>Em 23 de setembro de 1999, a sonda <em>Mars Climate Orbiter</em>, da NASA, foi perdida ao chegar a Marte. A investigação concluiu que o software em terra, fornecido pela Lockheed Martin, entregava dados de impulso em libras-força-segundo, enquanto o software de navegação do JPL esperava newtons-segundo. Cada sistema estava correto segundo a própria convenção; o erro acumulado desviou a trajetória e a sonda entrou na atmosfera marciana a uma altitude muito menor do que a planejada (fonte: NASA, <em>Mars Climate Orbiter Mishap Investigation Board — Phase I Report</em>, 1999).</p>
+            <h3>O Guardião — o que fazer</h3>
+            <p>Não confie que a convenção comum seja "óbvia". Escreva-a no tipo, no contrato e no teste de fronteira; faça com que o sistema recuse o que chega sem unidade explícita.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Referências e Leituras Complementares</h2>
+            <ul>
+                <li><span class="highlight">Sefer Yetzirah</span> 1:4 — "dez, e não nove; dez, e não onze"</li>
+                <li><span class="highlight">Gênesis 4:1</span> — o sentido de "conhecer" (<em>yada</em>) como união</li>
+                <li><span class="highlight">Schneur Zalman de Liadi</span> — Tanya (Likutei Amarim), sobre Chabad (Chokhmah-Binah-Da'at)</li>
+                <li><span class="highlight">Scholem, Gershom</span> — Major Trends in Jewish Mysticism [1941]</li>
+                <li><span class="highlight">NASA</span> — Mars Climate Orbiter Mishap Investigation Board, Phase I Report [1999]</li>
+                <li><span class="highlight">Evans, Eric</span> — Domain-Driven Design [2003] (linguagem ubíqua e contextos delimitados)</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-back">
+            <a href="../index.html" class="back-button">← Voltar à Página Inicial</a>
+        </div>
+        <div class="footer-credits">
+            <strong>The Keter Protocol</strong> — Estudo #0007<br>
+            Da'at, a Sefirá Invisível: o Conhecimento que Une as Partes<br>
+            <br>
+            © 2026 | Convergência entre Sabedoria Ancestral e Engenharia Moderna<br>
+            Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <script>
+        // Permite navegação normal dos botões de voltar
+        document.querySelectorAll('.back-button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                // Navegação padrão habilitada
+            });
+        });
+    </script>
+</body>
+</html>
