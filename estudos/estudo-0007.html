@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Estudo #0007: Chesed e Gevurah — Expansão, Limite e o Equilíbrio de Tiferet - The Keter Protocol">
+    <title>Estudo #0007 - The Keter Protocol</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-dark: #0a0a0a;
+            --color-dark-secondary: #1a1a1a;
+            --color-dark-tertiary: #2d2d2d;
+            --color-gold: #d4af37;
+            --color-gold-light: #e6c547;
+            --color-white: #f5f5f5;
+            --color-white-secondary: #e0e0e0;
+            --color-accent: #c9a961;
+
+            --font-title: 'Cinzel', serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-dark);
+            color: var(--color-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background-color: var(--color-dark-secondary);
+            border-bottom: 1px solid var(--color-accent);
+            padding: 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background-color: transparent;
+            color: var(--color-gold);
+            text-decoration: none;
+            font-family: var(--font-title);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            border: 1px solid var(--color-gold);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .back-button:hover {
+            background-color: var(--color-gold);
+            color: var(--color-dark);
+        }
+
+        .header-title {
+            font-family: var(--font-title);
+            font-size: 1.3rem;
+            color: var(--color-gold);
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .study-hero {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .study-hero h1 {
+            font-family: var(--font-title);
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            color: var(--color-gold);
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .study-number {
+            font-family: var(--font-title);
+            font-size: 0.95rem;
+            color: var(--color-white-secondary);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .study-divider {
+            width: 80px;
+            height: 2px;
+            background: var(--color-gold);
+            margin: 1.5rem auto;
+            opacity: 0.7;
+        }
+
+        .study-hero p {
+            font-size: 1.05rem;
+            color: var(--color-white-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* ===== CONTENT SECTIONS ===== */
+        .content-section {
+            margin-bottom: 3.5rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .content-section h2 {
+            font-family: var(--font-title);
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            color: var(--color-gold);
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .content-section h3 {
+            font-family: var(--font-title);
+            font-size: 1.3rem;
+            color: var(--color-gold-light);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .content-section p {
+            font-size: 1rem;
+            color: var(--color-white-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
+            font-weight: 300;
+        }
+
+        .content-section ul,
+        .content-section ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .content-section li {
+            font-size: 1rem;
+            color: var(--color-white-secondary);
+            margin-bottom: 0.8rem;
+            line-height: 1.8;
+        }
+
+        .highlight {
+            color: var(--color-gold-light);
+            font-weight: 600;
+        }
+
+        .quote {
+            font-style: italic;
+            color: var(--color-gold);
+            border-left: 3px solid var(--color-gold);
+            padding-left: 2rem;
+            margin: 2rem 0;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        /* ===== COMPARISON TABLE ===== */
+        .table-container {
+            overflow-x: auto;
+            margin: 2rem 0;
+            border: 1px solid var(--color-accent);
+            background-color: var(--color-dark-secondary);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background-color: var(--color-dark-tertiary);
+            border-bottom: 2px solid var(--color-gold);
+            padding: 1.2rem;
+            text-align: left;
+            font-family: var(--font-title);
+            color: var(--color-gold);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        td {
+            padding: 1rem 1.2rem;
+            border-bottom: 1px solid var(--color-dark-tertiary);
+            color: var(--color-white-secondary);
+        }
+
+        tr:hover {
+            background-color: var(--color-dark-tertiary);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .cell-title {
+            color: var(--color-gold-light);
+            font-weight: 600;
+        }
+
+        /* ===== CODE BLOCKS ===== */
+        .code-block {
+            background-color: var(--color-dark-tertiary);
+            border-left: 3px solid var(--color-gold);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: var(--color-white-secondary);
+            overflow-x: auto;
+            line-height: 1.6;
+        }
+
+        /* ===== FIGURE (diagrama) ===== */
+        .figure {
+            margin: 2rem 0;
+            border: 1px solid var(--color-accent);
+            background-color: var(--color-dark-secondary);
+            padding: 1.5rem;
+        }
+
+        .figure svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .figure figcaption {
+            margin-top: 1.2rem;
+            font-size: 0.85rem;
+            color: var(--color-white-secondary);
+            font-style: italic;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--color-dark-secondary);
+            border-top: 1px solid var(--color-accent);
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer-back {
+            margin-bottom: 2rem;
+        }
+
+        .footer-credits {
+            font-size: 0.85rem;
+            color: var(--color-white-secondary);
+        }
+
+        .footer-credits strong {
+            color: var(--color-gold);
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== RESPONSIVENESS ===== */
+        @media (max-width: 768px) {
+            header {
+                padding: 1.5rem;
+            }
+
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            main {
+                padding: 2rem 1.5rem;
+            }
+
+            .study-hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .content-section h2 {
+                font-size: 1.3rem;
+            }
+
+            table {
+                font-size: 0.85rem;
+            }
+
+            th, td {
+                padding: 0.8rem;
+            }
+
+            .figure {
+                padding: 1rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-container">
+            <a href="../index.html" class="back-button">← Voltar à Página Inicial</a>
+            <div class="header-title">THE KETER PROTOCOL</div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <section class="study-hero">
+            <div class="study-number">Estudo #0007</div>
+            <h1>Chesed e Gevurah: Expansão, Limite e o Equilíbrio de Tiferet</h1>
+            <div class="study-divider"></div>
+            <p>Generosidade sem freio derruba o sistema; rigor sem generosidade o paralisa. As três Sefirot emocionais centrais lidas como autoscaling, rate limiting e circuit breaker.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Introdução: o Braço Direito, o Braço Esquerdo e o Centro</h2>
+            <p>O Estudo #0002 apresentou as dez Sefirot como mapa. Este estudo aproxima a lente de três delas: <span class="highlight">Chesed</span> (bondade amorosa), <span class="highlight">Gevurah</span> (rigor, julgamento) e <span class="highlight">Tiferet</span> (beleza, harmonia). Na tradição, Chesed é doação incondicional, sem esperar retorno, associada à água e ao braço direito. Gevurah, também chamada <em>midat ha-din</em> ("atributo do julgamento"), é a força que limita a doação quando o receptor não está pronto para ela; no plano da alma, é o poder de conter o impulso de dar. Tiferet ocupa a coluna central e integra as duas: o Ari a descreve como a coluna do meio que inclui ambas, e é chamada também <em>Rachamim</em> (misericórdia).</p>
+            <p>Um ponto importante da fonte: o equilíbrio de Tiferet <strong>não é um meio-termo aritmético</strong>, e sim um alinhamento dinâmico entre forças opostas. É essa a ideia que o estudo leva para a engenharia.</p>
+            <p><em>Nota metodológica:</em> como nos estudos anteriores, as correspondências com software são analogias pedagógicas, não afirmações históricas. As fontes cabalísticas consultadas hoje são, em sua maioria, divulgação devocional; as citações do Zohar e do Ari aparecem aqui em segunda mão e devem ser conferidas nos textos originais antes de uso acadêmico.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Fundamentos: a Imagem do Cálice</h2>
+            <p>Um costume do Kidush ilustra o ponto: acrescenta-se água ao vinho. O vinho, vermelho e forte, representa Gevurah; a água, clara e vivificante, representa Chesed. Misturá-los "adoça o julgamento" e traz equilíbrio. Nenhum dos dois é descartado: o cálice precisa dos dois, na proporção certa.</p>
+            <h3>Dois Modos de Falha</h3>
+            <p>Chesed sem Gevurah é <em>dar sem medida</em>: o recipiente transborda. Gevurah sem Chesed é <em>reter sem fim</em>: nada flui. Todo sistema sob carga vive essa tensão entre aceitar tudo e proteger-se.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Mapa de Correspondências</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Conceito Cabalístico</th>
+                            <th>Leitura Técnica (analogia)</th>
+                            <th>Consequência de Projeto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="cell-title">Chesed (bondade, expansão)</td>
+                            <td>Aceitar requisições, escalar horizontalmente, retentar chamadas</td>
+                            <td>Seja generoso por padrão: capacidade elástica, retries com backoff e jitter</td>
+                        </tr>
+                        <tr>
+                            <td class="cell-title">Gevurah (rigor, limite)</td>
+                            <td>Rate limiting, quotas, timeouts, backpressure, load shedding</td>
+                            <td>Todo recurso compartilhado tem um limite explícito e declarado</td>
+                        </tr>
+                        <tr>
+                            <td class="cell-title">Tiferet (harmonia)</td>
+                            <td>Circuit breaker e controle adaptativo entre os dois polos</td>
+                            <td>O limite reage ao estado real do sistema, não é constante cega</td>
+                        </tr>
+                        <tr>
+                            <td class="cell-title">Água no vinho (Kidush)</td>
+                            <td>Degradação graciosa</td>
+                            <td>Sob estresse, sirva menos, mas sirva: resposta parcial em vez de colapso</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Tiferet em Código: o Circuit Breaker</h2>
+            <p>O padrão <em>Circuit Breaker</em> foi popularizado por Michael Nygard em <em>Release It!</em> (2007) e descrito por Martin Fowler em artigo de 2014. Uma chamada protegida é envolvida por um objeto que monitora falhas; ao atingir um limiar, o disjuntor "abre" e as chamadas seguintes retornam erro imediatamente, sem tocar a dependência. Passado um tempo, deixa passar poucas chamadas de teste para verificar se a dependência se recuperou. A terminologia vem dos disjuntores elétricos, onde "fechado" é o estado normal.</p>
+            <p>A leitura de Tiferet: o disjuntor não é nem Chesed puro (insistir em chamar) nem Gevurah puro (nunca mais chamar). Ele alterna entre os dois conforme a realidade observada, e a fase de teste é a misericórdia (<em>Rachamim</em>) que permite recuperação.</p>
+            <div class="code-block">
+CLOSED     (Chesed)    → chamadas fluem; falhas são contadas
+OPEN       (Gevurah)   → limiar excedido: falha rápida, dependência poupada
+HALF-OPEN  (Tiferet)   → poucas chamadas de teste; sucesso fecha, falha reabre
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Checklist de Aplicação</h2>
+            <ol>
+                <li>Defina limites explícitos (Gevurah) para cada recurso compartilhado: conexões, filas, taxa por cliente.</li>
+                <li>Defina timeouts em toda chamada remota; chamada sem timeout é Chesed sem medida.</li>
+                <li>Use retries com backoff exponencial e jitter, e orçamento máximo de tentativas, para a generosidade não virar tempestade de retentativas.</li>
+                <li>Proteja dependências instáveis com circuit breaker e defina o comportamento degradado quando aberto.</li>
+                <li>Prefira limites adaptativos (que reagem a latência e erro) a constantes fixas.</li>
+                <li>Teste o equilíbrio: injete falha e carga, e verifique se o sistema degrada com graça em vez de colapsar.</li>
+            </ol>
+        </section>
+
+        <section class="content-section">
+            <h2>Visão do Oráculo e do Guardião</h2>
+            <h3>O Oráculo — o que o padrão revela</h3>
+            <p>Em falhas em cascata, o padrão recorrente é Chesed sem Gevurah: clientes insistem, retentam e multiplicam carga sobre uma dependência já combalida, impedindo sua recuperação. O sistema "ajuda" até derrubar.</p>
+            <h3>O Guardião — o que fazer</h3>
+            <p>Faça a pergunta em cada fronteira de serviço: <em>qual é o meu Gevurah aqui?</em> Se a resposta for "nenhum", você tem uma generosidade sem vaso. Comece pelos timeouts e pelo orçamento de retries, que são baratos, e só depois adicione disjuntores.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Referências e Leituras Complementares</h2>
+            <ul>
+                <li><span class="highlight">inner.org</span> — "Gevurah" (série sobre as Sefirot): <a href="https://inner.org/sefirot/sefgevur.htm" style="color:var(--color-gold)">inner.org/sefirot/sefgevur.htm</a></li>
+                <li><span class="highlight">Morasha</span> — "The Seven Emotional Sefirot": <a href="https://www.morasha.com.br/en/mysticism/the-seven-emotional-sefirot.html" style="color:var(--color-gold)">morasha.com.br</a></li>
+                <li><span class="highlight">Kabbalah Empowerment</span> — "Sephira of Tiferet": <a href="https://www.kabbalahempowerment.com/sephira-of-tiferet-beauty-and-balance" style="color:var(--color-gold)">kabbalahempowerment.com</a></li>
+                <li><span class="highlight">Nygard, Michael</span> — Release It! Design and Deploy Production-Ready Software [2007]</li>
+                <li><span class="highlight">Fowler, Martin</span> — "Circuit Breaker" [2014]: <a href="https://martinfowler.com/bliki/CircuitBreaker.html" style="color:var(--color-gold)">martinfowler.com/bliki/CircuitBreaker.html</a></li>
+                <li><span class="highlight">Estudo #0002</span> — Os Dez Caminhos (mapa geral das Sefirot)</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-back">
+            <a href="../index.html" class="back-button">← Voltar à Página Inicial</a>
+        </div>
+        <div class="footer-credits">
+            <strong>The Keter Protocol</strong> — Estudo #0007<br>
+            Chesed e Gevurah: Expansão, Limite e o Equilíbrio de Tiferet<br>
+            <br>
+            © 2026 | Convergência entre Sabedoria Ancestral e Engenharia Moderna<br>
+            Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <script>
+        // Permite navegação normal dos botões de voltar
+        document.querySelectorAll('.back-button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                // Navegação padrão habilitada
+            });
+        });
+    </script>
+</body>
+</html>

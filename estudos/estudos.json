@@ -70,5 +70,17 @@
   ],
   "data": "2026-10-04",
   "url": "estudos/estudo-0006.html"
+ },
+ {
+  "n": 7,
+  "titulo": "Chesed e Gevurah: Expansão, Limite e o Equilíbrio de Tiferet",
+  "resumo": "Generosidade sem freio derruba o sistema: Chesed, Gevurah e Tiferet como autoscaling, rate limiting e circuit breaker.",
+  "tags": [
+   "Sefirot",
+   "Resiliência",
+   "Arquitetura"
+  ],
+  "data": "2026-10-15",
+  "url": "estudos/estudo-0007.html"
  }
 ]
