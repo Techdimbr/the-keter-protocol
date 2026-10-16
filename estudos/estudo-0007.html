@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Estudo #0007: Chochmah, Binah e Daat — da Intuição ao Conhecimento Integrado - The Keter Protocol">
+    <title>Estudo #0007 - The Keter Protocol</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-dark: #0a0a0a;
+            --color-dark-secondary: #1a1a1a;
+            --color-dark-tertiary: #2d2d2d;
+            --color-gold: #d4af37;
+            --color-gold-light: #e6c547;
+            --color-white: #f5f5f5;
+            --color-white-secondary: #e0e0e0;
+            --color-accent: #c9a961;
+
+            --font-title: 'Cinzel', serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-dark);
+            color: var(--color-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background-color: var(--color-dark-secondary);
+            border-bottom: 1px solid var(--color-accent);
+            padding: 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background-color: transparent;
+            color: var(--color-gold);
+            text-decoration: none;
+            font-family: var(--font-title);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            border: 1px solid var(--color-gold);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .back-button:hover {
+            background-color: var(--color-gold);
+            color: var(--color-dark);
+        }
+
+        .header-title {
+            font-family: var(--font-title);
+            font-size: 1.3rem;
+            color: var(--color-gold);
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .study-hero {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .study-hero h1 {
+            font-family: var(--font-title);
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            color: var(--color-gold);
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .study-number {
+            font-family: var(--font-title);
+            font-size: 0.95rem;
+            color: var(--color-white-secondary);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .study-divider {
+            width: 80px;
+            height: 2px;
+            background: var(--color-gold);
+            margin: 1.5rem auto;
+            opacity: 0.7;
+        }
+
+        .study-hero p {
+            font-size: 1.05rem;
+            color: var(--color-white-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* ===== CONTENT SECTIONS ===== */
+        .content-section {
+            margin-bottom: 3.5rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .content-section h2 {
+            font-family: var(--font-title);
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            color: var(--color-gold);
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .content-section h3 {
+            font-family: var(--font-title);
+            font-size: 1.3rem;
+            color: var(--color-gold-light);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .content-section p {
+            font-size: 1rem;
+            color: var(--color-white-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
+            font-weight: 300;
+        }
+
+        .content-section ul,
+        .content-section ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .content-section li {
+            font-size: 1rem;
+            color: var(--color-white-secondary);
+            margin-bottom: 0.8rem;
+            line-height: 1.8;
+        }
+
+        .highlight {
+            color: var(--color-gold-light);
+            font-weight: 600;
+        }
+
+        .quote {
+            font-style: italic;
+            color: var(--color-gold);
+            border-left: 3px solid var(--color-gold);
+            padding-left: 2rem;
+            margin: 2rem 0;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        /* ===== COMPARISON TABLE ===== */
+        .table-container {
+            overflow-x: auto;
+            margin: 2rem 0;
+            border: 1px solid var(--color-accent);
+            background-color: var(--color-dark-secondary);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background-color: var(--color-dark-tertiary);
+            border-bottom: 2px solid var(--color-gold);
+            padding: 1.2rem;
+            text-align: left;
+            font-family: var(--font-title);
+            color: var(--color-gold);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        td {
+            padding: 1rem 1.2rem;
+            border-bottom: 1px solid var(--color-dark-tertiary);
+            color: var(--color-white-secondary);
+        }
+
+        tr:hover {
+            background-color: var(--color-dark-tertiary);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .cell-title {
+            color: var(--color-gold-light);
+            font-weight: 600;
+        }
+
+        /* ===== CODE BLOCKS ===== */
+        .code-block {
+            background-color: var(--color-dark-tertiary);
+            border-left: 3px solid var(--color-gold);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: var(--color-white-secondary);
+            overflow-x: auto;
+            line-height: 1.6;
+        }
+
+        /* ===== FIGURE (diagrama) ===== */
+        .figure {
+            margin: 2rem 0;
+            border: 1px solid var(--color-accent);
+            background-color: var(--color-dark-secondary);
+            padding: 1.5rem;
+        }
+
+        .figure svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .figure figcaption {
+            margin-top: 1.2rem;
+            font-size: 0.85rem;
+            color: var(--color-white-secondary);
+            font-style: italic;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--color-dark-secondary);
+            border-top: 1px solid var(--color-accent);
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer-back {
+            margin-bottom: 2rem;
+        }
+
+        .footer-credits {
+            font-size: 0.85rem;
+            color: var(--color-white-secondary);
+        }
+
+        .footer-credits strong {
+            color: var(--color-gold);
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== RESPONSIVENESS ===== */
+        @media (max-width: 768px) {
+            header {
+                padding: 1.5rem;
+            }
+
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            main {
+                padding: 2rem 1.5rem;
+            }
+
+            .study-hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .content-section h2 {
+                font-size: 1.3rem;
+            }
+
+            table {
+                font-size: 0.85rem;
+            }
+
+            th, td {
+                padding: 0.8rem;
+            }
+
+            .figure {
+                padding: 1rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-container">
+            <a href="../index.html" class="back-button">← Voltar à Página Inicial</a>
+            <div class="header-title">THE KETER PROTOCOL</div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <section class="study-hero">
+            <div class="study-number">Estudo #0007</div>
+            <h1>Chochmah, Binah e Daat: da Intuição ao Conhecimento Integrado</h1>
+            <div class="study-divider"></div>
+            <p>A tríade intelectual da Cabala — o lampejo, a elaboração e a união que os mantém — como mapa do ciclo que leva um requisito vago a um sistema que a equipe realmente compreende.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Introdução: Três Faculdades Abaixo da Coroa</h2>
+            <p>Nos estudos anteriores descemos de Keter (#0005) pelos Quatro Mundos (#0006). Agora entramos na primeira tríade da Árvore: <span class="highlight">Chochmah</span> (Sabedoria), <span class="highlight">Binah</span> (Compreensão) e <span class="highlight">Daat</span> (Conhecimento). No Tanya (cap. 3), Chochmah é o primeiro lampejo do intelecto — o <em>barak ha-mavrik</em>, o clarão intuitivo que inicia a revelação; Binah é a elaboração desse lampejo; e Daat é a faculdade que une e ancora as duas.</p>
+            <p>A tradição Chabad usa duas imagens: Chochmah é como uma fonte cujas águas brotam gota a gota; Binah, um rio largo e profundo. Sem Daat, o lampejo desapareceria tão depressa quanto surgiu, caso não fosse ancorado na compreensão de Binah. A etimologia de <em>da'at</em> — "E Adão <em>conheceu</em> (<em>yada</em>) Eva" — indica união e apego, não apenas informação. Jonathan Sacks lê as três como estágios de uma ideia: a ideia em seu potencial inicial, a ideia concebida em detalhe e, por fim, o compromisso que a transforma em intenção ativa.</p>
+            <p><em>Nota metodológica:</em> como nos estudos anteriores, as correspondências com engenharia são analogias pedagógicas, não afirmações históricas. A leitura de Sacks é interpretação acadêmica, e a formulação "Daat Elyon une Chochmah e Binah" vem de uma tradução específica do Tanya, não de consenso universal.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Fundamentos: o Ciclo Lampejo, Elaboração, União</h2>
+            <h3>Chochmah, o ponto sem dimensão</h3>
+            <p>O lampejo é completo mas sem desdobramento: a percepção de que "há um problema aqui e existe uma forma de resolvê-lo". É valioso e frágil — se não for registrado e elaborado, evapora.</p>
+            <h3>Binah, o desdobramento</h3>
+            <p>Binah toma o ponto e o expande em estrutura: distingue partes, relações, casos de borda. É o trabalho de modelagem — o ponto vira um rio com margens.</p>
+            <h3>Daat, a ancoragem</h3>
+            <p>Daat não é uma sefirá a mais, mas o elo que mantém as duas em contato e as transforma em compromisso. É o conhecimento que a equipe <em>possui</em> de fato — compartilhado, verificado, vivido —, não o que está apenas escrito em algum lugar.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Mapa de Correspondências: da Tríade ao Ciclo de Engenharia</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Conceito Cabalístico</th>
+                            <th>Leitura Técnica (analogia)</th>
+                            <th>Consequência de Projeto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="cell-title">Chochmah (lampejo)</td>
+                            <td>Insight inicial: hipótese, protótipo, requisito ainda informal</td>
+                            <td>Capture-o imediatamente (spike, nota, issue) antes que se perca</td>
+                        </tr>
+                        <tr>
+                            <td class="cell-title">Binah (elaboração)</td>
+                            <td>Modelagem: domínio, interfaces, unidades, invariantes</td>
+                            <td>Explicite tipos, unidades e contratos; o que é implícito aqui quebra depois</td>
+                        </tr>
+                        <tr>
+                            <td class="cell-title">Daat (união)</td>
+                            <td>Entendimento compartilhado e verificado entre equipes e componentes</td>
+                            <td>Valide ponta a ponta; teste de integração é a forma de Daat que o código consegue provar</td>
+                        </tr>
+                        <tr>
+                            <td class="cell-title">Falha de Daat</td>
+                            <td>Dois componentes corretos isoladamente, incompatíveis entre si</td>
+                            <td>Interfaces sem verificação executável são onde a união se rompe</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Aplicação: Tornando Daat Executável</h2>
+            <p>Daat, em engenharia, é o que sobrevive à troca de pessoas e de equipes. Ele se constrói com artefatos que <em>falham</em> quando a união se rompe:</p>
+            <div class="code-block">
+chochmah: spike / hipótese registrada          → o clarão não se perde
+binah:    tipos com unidade, schema, invariantes → a forma é explícita
+daat:     contract test + integração ponta a ponta → a união é provada
+          (quando quebra, o build quebra - não a produção)
+            </div>
+            <p>Exemplo mínimo: em vez de um número solto, um tipo que carrega a unidade — <code>Impulso(valor, unidade="N·s")</code> — e uma conversão obrigatória na fronteira. O compilador ou o teste passa a guardar o que antes só existia na cabeça de alguém.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Checklist de Aplicação</h2>
+            <ol>
+                <li>Registre o insight inicial em até um dia (Chochmah) — issue, spike ou nota de decisão.</li>
+                <li>Modele unidades, tipos e invariantes explicitamente; nenhum valor numérico cruza uma fronteira sem unidade declarada (Binah).</li>
+                <li>Escreva contract tests em cada interface entre equipes ou sistemas (Daat).</li>
+                <li>Garanta ao menos um teste ponta a ponta que exercite o fluxo completo com dados realistas.</li>
+                <li>Quando dois componentes "corretos" divergirem, trate como falha de Daat: corrija o processo que deixou a divergência invisível, não só o código.</li>
+            </ol>
+        </section>
+
+        <section class="content-section">
+            <h2>Visão do Oráculo e do Guardião</h2>
+            <h3>O Oráculo: o que o padrão revela</h3>
+            <p>Quando cada lado entende sua parte (Binah) mas ninguém verifica a união (Daat), o defeito vive na fronteira, onde nenhum teste local o enxerga.</p>
+            <h3>Exemplo real</h3>
+            <p>A sonda Mars Climate Orbiter foi perdida em 1999. O Mishap Investigation Board concluiu, no relatório da Fase I (10 de novembro de 1999), que a causa raiz foi a não utilização de unidades métricas num arquivo de software de solo, o <em>SM_FORCES</em> ("small forces"). A especificação de interface exigia saída em newton-segundos, mas o programa entregava libra-força-segundos; o arquivo de dessaturação do momento angular e o software de navegação subestimaram o efeito sobre a trajetória por um fator de 4,45. O relatório cita também a falta de verificação ponta a ponta do software de navegação e dos modelos computacionais, além de comunicação e treinamento inconsistentes (fontes: <a href="https://llis.nasa.gov/llis_lib/pdf/1009464main1_0641-mr.pdf">NASA LLIS</a>, <a href="https://discovery.larc.nasa.gov/PDF_FILES/MCO_report_2.pdf">relatório MCO, NASA Langley</a>).</p>
+            <h3>O Guardião: o que fazer</h3>
+            <p>Faça a unidade fazer parte do tipo, e a interface fazer parte do teste. Daat é a verificação ponta a ponta que transforma "cada parte está certa" em "o todo está certo".</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Referências e Leituras Complementares</h2>
+            <ul>
+                <li><span class="highlight">Schneur Zalman de Liadi</span> — Tanya (Likutei Amarim), cap. 3: Chochmah, Binah e Daat</li>
+                <li><span class="highlight">Sacks, Jonathan</span> — leitura de Chochmah/Binah/Daat como estágios de uma ideia, citada na Wikipédia (verbete Chabad philosophy)</li>
+                <li><span class="highlight">NASA Mishap Investigation Board</span> — Mars Climate Orbiter Phase I Report [10/11/1999]</li>
+                <li><span class="highlight">Scholem, Gershom</span> — Major Trends in Jewish Mysticism [1941]</li>
+                <li>Estudos #0002, #0005 e #0006 deste acervo</li>
+            </ul>
+        </section>
+    </main>
+
+        <!-- FOOTER -->
+    <footer>
+        <div class="footer-back">
+            <a href="../index.html" class="back-button">← Voltar à Página Inicial</a>
+        </div>
+        <div class="footer-credits">
+            <strong>The Keter Protocol</strong> — Estudo #0007<br>
+            Chochmah, Binah e Daat: da Intuição ao Conhecimento Integrado<br>
+            <br>
+            © 2026 | Convergência entre Sabedoria Ancestral e Engenharia Moderna<br>
+            Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <script>
+        // Permite navegação normal dos botões de voltar
+        document.querySelectorAll('.back-button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                // Navegação padrão habilitada
+            });
+        });
+    </script>
+</body>
+</html>
