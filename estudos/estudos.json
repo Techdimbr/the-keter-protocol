@@ -70,5 +70,17 @@
   ],
   "data": "2026-10-04",
   "url": "estudos/estudo-0006.html"
+ },
+ {
+  "n": 7,
+  "titulo": "Sefer Yetzirah: o Alfabeto, as 231 Portas e a Explosão Combinatória",
+  "resumo": "22 letras, 231 portas e casas fatoriais: o espaço combinatório como princípio de arquitetura, do teste pairwise ao colapso por backtracking.",
+  "tags": [
+   "Sefer Yetzirah",
+   "Combinatória",
+   "Testes"
+  ],
+  "data": "2026-10-20",
+  "url": "estudos/estudo-0007.html"
  }
 ]
