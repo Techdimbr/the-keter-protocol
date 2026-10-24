@@ -70,5 +70,17 @@
   ],
   "data": "2026-10-04",
   "url": "estudos/estudo-0006.html"
+ },
+ {
+  "n": 7,
+  "titulo": "PaRDeS: Quatro Níveis de Leitura de um Sistema",
+  "resumo": "Peshat, Remez, Derash e Sod como método de revisão de código e análise de incidentes, com o caso Heartbleed.",
+  "tags": [
+   "PaRDeS",
+   "Revisão de Código",
+   "Segurança"
+  ],
+  "data": "2026-10-24",
+  "url": "estudos/estudo-0007.html"
  }
 ]
